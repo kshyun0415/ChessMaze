@@ -22,7 +22,7 @@ public class PlayerHealth : LivingEntity
     protected override void OnEnable()
     {
         // LivingEntity의 OnEnable() 실행 (상태 초기화)
-        base.OnEnable();
+        // base.OnEnable();
         UpdateUI();
     }
 
@@ -37,7 +37,7 @@ public class PlayerHealth : LivingEntity
 
     private void UpdateUI()
     {
-        UIManager.Instance.UpdateHealthText(dead ? 0f : health);
+        // UIManager.Instance.UpdateHealthText(dead ? 0f : health);
     }
 
     // 데미지 처리

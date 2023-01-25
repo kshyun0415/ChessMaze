@@ -98,7 +98,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 stamina -= 10f * Time.deltaTime;
                 UpdateST();
             }
-            else if (stamina < maxStamina)
+            else if (stamina < maxStamina && !Input.GetKey(KeyCode.LeftShift))
             {
                 stamina += 10f * Time.deltaTime;
                 UpdateST();
