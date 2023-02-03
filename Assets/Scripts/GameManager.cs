@@ -4,7 +4,8 @@
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // 싱글톤이 할당될 static 변수
-
+    public GameObject EscCanvas;
+    private bool escPressed;
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
     public static GameManager Instance
     {
@@ -27,7 +28,13 @@ public class GameManager : MonoBehaviour
     {
         // 씬에 싱글톤 오브젝트가 된 다른 GameManager 오브젝트가 있다면 자신을 파괴
         if (Instance != this) Destroy(gameObject);
+
     }
+    private void Start()
+    {
+        escPressed = false;
+    }
+
 
 
     // 점수를 추가하고 UI 갱신
@@ -42,6 +49,27 @@ public class GameManager : MonoBehaviour
             UIManager.Instance.UpdateScoreText(score);
         }
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
+
+            if (escPressed == false)
+            {
+                OnEscPressed();
+                escPressed = true;
+            }
+            else
+            {
+                EscCanvas.SetActive(false);
+                escPressed = false;
+                TimerController.instance.BeginTimer();
+            }
+        }
+
+
+    }
 
     // 게임 오버 처리
     public void EndGame()
@@ -51,4 +79,18 @@ public class GameManager : MonoBehaviour
         // 게임 오버 UI를 활성화
         UIManager.Instance.SetActiveGameoverUI(true);
     }
+    public void OnEscPressed()
+    {
+        TimerController.instance.EndTimer();
+        EscCanvas.SetActive(true);
+
+    }
+    public void ResumeGame()
+    {
+        EscCanvas.SetActive(false);
+        escPressed = false;
+        TimerController.instance.BeginTimer();
+    }
 }
+
+

@@ -24,9 +24,10 @@ public class Pawn : LivingEntity
     public Transform attackRoot;
     public Transform eyeTransform;
 
-    private AudioSource audioPlayer; // 오디오 소스 컴포넌트
-    public AudioClip hitClip; // 피격시 재생할 소리
-    public AudioClip deathClip; // 사망시 재생할 소리
+    private AudioSource audioSource; // 오디오 소스 컴포넌트
+
+    public AudioClip patrolClip;
+    public AudioClip trackingClip; // 추격시 재생할 소리
 
     // private Renderer skinRenderer; // 렌더러 컴포넌트
 
@@ -77,7 +78,7 @@ public class Pawn : LivingEntity
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        audioPlayer = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
         // skinRenderer = GetComponentInChildren<Renderer>();
 
         attackDistance = Vector3.Distance(transform.position,
@@ -110,8 +111,7 @@ public class Pawn : LivingEntity
     {
 
         StartCoroutine(UpdatePath());
-        targetEntity = null;
-        state = State.Patrol;
+
     }
 
     // Update is called once per frame
@@ -125,7 +125,7 @@ public class Pawn : LivingEntity
             // BeginAttack();
         }
         Debug.Log(state);
-
+        Debug.Log(targetEntity);
     }
 
     private void FixedUpdate()
@@ -182,10 +182,18 @@ public class Pawn : LivingEntity
                 {
                     state = State.Tracking;
                     agent.speed = runSpeed;
+
+                }
+                audioSource.clip = trackingClip;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
                 }
 
                 // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
                 agent.SetDestination(targetEntity.transform.position);
+
+
             }
             else
             {
@@ -195,9 +203,14 @@ public class Pawn : LivingEntity
                 {
                     state = State.Patrol;
                     agent.speed = patrolSpeed;
+                    audioSource.clip = patrolClip;
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.Play();
+                    }
                 }
 
-                if (agent.remainingDistance <= 1f)
+                if (agent.remainingDistance <= 3f)
                 {
                     var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     agent.SetDestination(patrolPosition);
