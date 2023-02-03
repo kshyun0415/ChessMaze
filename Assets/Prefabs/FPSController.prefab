@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 5400000}
   - component: {fileID: 8200000}
-  m_Layer: 0
+  - component: {fileID: 715138491}
+  m_Layer: 3
   m_Name: FPSController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 400002}
   m_Father: {fileID: 0}
@@ -52,7 +54,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,19 +67,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ec5cf00ca181d45a42ba1870e148c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 100
   m_IsWalking: 0
   m_WalkSpeed: 5
   m_RunSpeed: 10
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
-  m_StickToGroundForce: 10
+  m_StickToGroundForce: 5
   m_GravityMultiplier: 2
   m_MouseLook:
     XSensitivity: 2
     YSensitivity: 2
     clampVerticalRotation: 1
-    MinimumX: -90
-    MaximumX: 90
     smooth: 0
     smoothTime: 5
     lockCursor: 1
@@ -177,6 +178,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8bc94ec6ed537e743b481638bdcd503d, type: 3}
   m_JumpSound: {fileID: 8300000, guid: 5897aeed9b676024fbb8c694b421a861, type: 3}
   m_LandSound: {fileID: 8300000, guid: 3b09d59f4499d45428baa7a21e954296, type: 3}
+  stamina: 100
+  stBar: {fileID: 0}
+  hpText: {fileID: 0}
 --- !u!54 &5400000
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,7 +209,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -213,7 +217,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.0015564
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -289,6 +293,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &715138491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575a82763590b8746ba9371c7ea6292c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 100
+  deathClip: {fileID: 0}
+  hitClip: {fileID: 0}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +320,8 @@ GameObject:
   - component: {fileID: 2000000}
   - component: {fileID: 8100000}
   - component: {fileID: 12474086}
-  m_Layer: 0
+  - component: {fileID: 1395376952}
+  m_Layer: 3
   m_Name: FirstPersonCharacter
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -318,6 +338,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
@@ -334,9 +355,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -380,3 +402,19 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100002}
   m_Enabled: 1
+--- !u!114 &1395376952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c855fc1255a32c49b633b9c2d18983a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 64
+  distance: 2

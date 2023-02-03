@@ -8,13 +8,13 @@ public class RayInteraction : MonoBehaviour
     private Camera playerCam;
     public float distance = 2f;
     GameObject Player;
-    bool cubePressed;
+
     // Start is called before the first frame update
     void Start()
     {
         Player = transform.parent.gameObject;
         playerCam = Camera.main;
-        cubePressed = false;
+
     }
 
     // Update is called once per frame
@@ -29,10 +29,11 @@ public class RayInteraction : MonoBehaviour
 
             if (Physics.Raycast(rayOrigin, rayDir, out hit, distance, whatIsTarget))
             {
-                if (hit.collider.gameObject.name == "Cube")
+                if (hit.collider.gameObject.name == "SafeZone")
                 {
-                    cubePressed = true;
-                    Debug.Log("Cube Pressed");
+
+                    Debug.Log("Safe");
+                    GameManager.Instance.isPlayerHidden = true;
                 }
 
             }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
     private bool escPressed;
+    public bool isPlayerHidden;
+    
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
     public static GameManager Instance
     {
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         escPressed = false;
+        
+        isPlayerHidden = false;
     }
 
 
@@ -91,6 +95,8 @@ public class GameManager : MonoBehaviour
         escPressed = false;
         TimerController.instance.BeginTimer();
     }
+
+    
 }
 
 

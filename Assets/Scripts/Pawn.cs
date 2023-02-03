@@ -46,6 +46,7 @@ public class Pawn : LivingEntity
     [HideInInspector] public LivingEntity targetEntity; // 추적할 대상
     public LayerMask whatIsTarget; // 추적 대상 레이어
 
+    private GameObject Player;
 
     private RaycastHit[] hits = new RaycastHit[10];
     private List<LivingEntity> lastAttackedTargets = new List<LivingEntity>();
@@ -109,7 +110,7 @@ public class Pawn : LivingEntity
 
     void Start()
     {
-
+        Player = GameObject.Find("FPSController");
         StartCoroutine(UpdatePath());
 
     }
@@ -119,13 +120,21 @@ public class Pawn : LivingEntity
     {
         if (dead) return;
 
-        if (state == State.Tracking &&
-            Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+        // if (state == State.Tracking &&
+        //     Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+        // {
+        //     // BeginAttack();
+        // }
+
+        if (hasTarget) { Debug.Log(gameObject.name + "target:" + targetEntity); }
+        if (GameManager.Instance.isPlayerHidden == true)
         {
-            // BeginAttack();
+            OnPlayerHidden();
         }
-        Debug.Log(state);
-        Debug.Log(targetEntity);
+        else
+        {
+            OnPlayerNotHidden();
+        }
     }
 
     private void FixedUpdate()
@@ -264,4 +273,16 @@ public class Pawn : LivingEntity
 
         return false;
     }
+
+    public void OnPlayerHidden()
+    {
+        Player.layer = LayerMask.NameToLayer("Hidden");
+        targetEntity = null;
+    }
+    public void OnPlayerNotHidden()
+    {
+        Player.layer = LayerMask.NameToLayer("Player");
+    }
+
 }
+
