@@ -34,6 +34,9 @@ public class RayInteraction : MonoBehaviour
 
                     Debug.Log("Safe");
                     GameManager.Instance.isPlayerHidden = true;
+                    GameManager.Instance.safeView = hit.collider.gameObject.transform.GetChild(0).transform;
+
+
                 }
 
             }

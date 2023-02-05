@@ -108,8 +108,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else
             {
+                transform.position = GameManager.Instance.safeView.position;
+                // transform.rotation = GameManager.Instance.safeView.rotation;
                 if (m_CharacterController.velocity.sqrMagnitude > 0)
                 {
+
                     GameManager.Instance.isPlayerHidden = false;
                 }
             }
