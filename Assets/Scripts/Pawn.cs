@@ -135,6 +135,25 @@ public class Pawn : LivingEntity
         {
             OnPlayerNotHidden();
         }
+
+        if (state == State.Patrol)
+        {
+            audioSource.clip = patrolClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+
+        if (state == State.Tracking)
+        {
+            audioSource.clip = trackingClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+
     }
 
     private void FixedUpdate()
@@ -193,11 +212,11 @@ public class Pawn : LivingEntity
                     agent.speed = runSpeed;
 
                 }
-                audioSource.clip = trackingClip;
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.Play();
-                }
+                // audioSource.clip = trackingClip;
+                // if (!audioSource.isPlaying)
+                // {
+                //     audioSource.Play();
+                // }
 
                 // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
                 agent.SetDestination(targetEntity.transform.position);
@@ -212,11 +231,11 @@ public class Pawn : LivingEntity
                 {
                     state = State.Patrol;
                     agent.speed = patrolSpeed;
-                    audioSource.clip = patrolClip;
-                    if (!audioSource.isPlaying)
-                    {
-                        audioSource.Play();
-                    }
+                    // audioSource.clip = patrolClip;
+                    // if (!audioSource.isPlaying)
+                    // {
+                    //     audioSource.Play();
+                    // }
                 }
 
                 if (agent.remainingDistance <= 3f)
