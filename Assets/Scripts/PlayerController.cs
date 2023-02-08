@@ -43,6 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
+        private Vector2 rawInput;
         private Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
@@ -115,7 +116,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 transform.position = GameManager.Instance.safeView.position;
                 // transform.rotation = GameManager.Instance.safeView.rotation;
-                if (m_CharacterController.velocity.sqrMagnitude > 0)
+                if (rawInput.sqrMagnitude > 1)
                 {
 
                     GameManager.Instance.isPlayerHidden = false;
@@ -261,7 +262,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
             m_Input = new Vector2(horizontal, vertical);
-
+            rawInput = m_Input;
             // normalize input if it exceeds 1 in combined length:
             if (m_Input.sqrMagnitude > 1)
             {
