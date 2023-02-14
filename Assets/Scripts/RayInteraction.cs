@@ -29,7 +29,7 @@ public class RayInteraction : MonoBehaviour
 
             if (Physics.Raycast(rayOrigin, rayDir, out hit, distance, whatIsTarget))
             {
-                if (hit.collider.gameObject.name == "SafeZone")
+                if (hit.collider.gameObject.tag == "SafeZone")
                 {
 
                     Debug.Log("Safe");

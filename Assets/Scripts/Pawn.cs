@@ -126,7 +126,7 @@ public class Pawn : LivingEntity
         //     // BeginAttack();
         // }
 
-        if (hasTarget) { Debug.Log(gameObject.name + "target:" + targetEntity); }
+
         if (GameManager.Instance.isPlayerHidden == true)
         {
             OnPlayerHidden();
@@ -136,14 +136,14 @@ public class Pawn : LivingEntity
             OnPlayerNotHidden();
         }
 
-        if (state == State.Patrol)
-        {
-            audioSource.clip = patrolClip;
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-        }
+        // if (state == State.Patrol)
+        // {
+        //     audioSource.clip = patrolClip;
+        //     if (!audioSource.isPlaying)
+        //     {
+        //         audioSource.Play();
+        //     }
+        // }
 
         if (state == State.Tracking)
         {
@@ -161,49 +161,50 @@ public class Pawn : LivingEntity
         if (dead) return;
 
 
-        if (state == State.Attacking)
-        {
-            var lookRotation =
-                Quaternion.LookRotation(targetEntity.transform.position - transform.position, Vector3.up);
-            var targetAngleY = lookRotation.eulerAngles.y;
+        // if (state == State.Attacking)
+        // {
+        //     var lookRotation =
+        //         Quaternion.LookRotation(targetEntity.transform.position - transform.position, Vector3.up);
+        //     var targetAngleY = lookRotation.eulerAngles.y;
 
-            transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY,
-                                        ref turnSmoothVelocity, turnSmoothTime);
-        }
+        //     transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY,
+        //                                 ref turnSmoothVelocity, turnSmoothTime);
+        // }
 
-        if (state == State.Attacking)
-        {
-            var direction = transform.forward;
-            var deltaDistance = agent.velocity.magnitude * Time.deltaTime;
+        // if (state == State.Attacking)
+        // {
+        //     var direction = transform.forward;
+        //     var deltaDistance = agent.velocity.magnitude * Time.deltaTime;
 
-            var size = Physics.SphereCastNonAlloc(attackRoot.position, attackRadius, direction, hits, deltaDistance,
-                whatIsTarget);
+        //     var size = Physics.SphereCastNonAlloc(attackRoot.position, attackRadius, direction, hits, deltaDistance,
+        //         whatIsTarget);
 
-            for (var i = 0; i < size; i++)
-            {
-                var attackTargetEntity = hits[i].collider.GetComponent<LivingEntity>();
+        //     for (var i = 0; i < size; i++)
+        //     {
+        //         var attackTargetEntity = hits[i].collider.GetComponent<LivingEntity>();
 
-                if (attackTargetEntity != null && !lastAttackedTargets.Contains(attackTargetEntity))
-                {
-                    var message = new DamageMessage();
-                    message.amount = damage;
-                    message.damager = gameObject;
-                    message.hitPoint = attackRoot.TransformPoint(hits[i].point);
-                    message.hitNormal = attackRoot.TransformDirection(hits[i].normal);
+        //         if (attackTargetEntity != null && !lastAttackedTargets.Contains(attackTargetEntity))
+        //         {
+        //             var message = new DamageMessage();
+        //             message.amount = damage;
+        //             message.damager = gameObject;
+        //             message.hitPoint = attackRoot.TransformPoint(hits[i].point);
+        //             message.hitNormal = attackRoot.TransformDirection(hits[i].normal);
 
-                    attackTargetEntity.ApplyDamage(message);
+        //             attackTargetEntity.ApplyDamage(message);
 
-                    lastAttackedTargets.Add(attackTargetEntity);
-                    break;
-                }
-            }
-        }
+        //             lastAttackedTargets.Add(attackTargetEntity);
+        //             break;
+        //         }
+        //     }
+        // }
     }
     private IEnumerator UpdatePath()
     {
         // 살아있는 동안 무한 루프
         while (!dead)
         {
+
             if (hasTarget)
             {
                 if (state == State.Patrol)

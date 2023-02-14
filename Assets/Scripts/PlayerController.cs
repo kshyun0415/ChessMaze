@@ -41,6 +41,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Camera m_Camera;
         private bool m_Jump;
+        float enemyDistance = 8f;
         private float m_YRotation;
         private Vector2 m_Input;
         private Vector2 rawInput;
@@ -53,7 +54,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        public LayerMask whatIsEnemy;
+#if UNITY_EDITOR
 
+        private void OnDrawGizmosSelected()
+        {
+            if (transform != null)
+            {
+                Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+                Gizmos.DrawSphere(transform.position, enemyDistance);
+            }
+
+
+        }
+
+#endif
         // Use this for initialization
         private void Start()
         {
@@ -121,6 +136,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
                     GameManager.Instance.isPlayerHidden = false;
                 }
+            }
+            var colliders = Physics.OverlapSphere(transform.position, enemyDistance, whatIsEnemy);
+            if (colliders.Length != 0)
+            {
+                foreach (var collider in colliders)
+                {
+                    // Debug.Log(collider.name);
+                }
+                GameManager.Instance.isEnemyNear = true;
+            }
+            else
+            {
+                // Debug.Log(colliders.Length);
+                GameManager.Instance.isEnemyNear = false;
             }
         }
 

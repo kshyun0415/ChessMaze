@@ -8,6 +8,11 @@ public class GameManager : MonoBehaviour
     private bool escPressed;
     public bool isPlayerHidden;
     public Transform safeView;
+    public bool isEnemyNear;
+
+
+    AudioSource audioSource;
+    public AudioClip heartBeatSound;
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
     public static GameManager Instance
     {
@@ -37,6 +42,7 @@ public class GameManager : MonoBehaviour
         escPressed = false;
 
         isPlayerHidden = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -55,6 +61,7 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
@@ -70,8 +77,21 @@ public class GameManager : MonoBehaviour
                 escPressed = false;
                 TimerController.instance.BeginTimer();
             }
-        }
 
+        }
+        if (isEnemyNear)
+        {
+
+            audioSource.clip = heartBeatSound;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
 
     }
 
@@ -87,6 +107,7 @@ public class GameManager : MonoBehaviour
     {
         TimerController.instance.EndTimer();
         EscCanvas.SetActive(true);
+        audioSource.Stop();
 
     }
     public void ResumeGame()
