@@ -200,17 +200,22 @@ public class Queen : LivingEntity
             if (hasTarget)
             {
 
-                if (state == State.Patrol)
-                {
-                    state = State.Tracking;
-                    agent.speed = runSpeed;
+                // if (state == State.Patrol)
+                // {
+                //     state = State.Tracking;
+                //     agent.speed = runSpeed;
 
-                }
+                // }
                 Debug.Log(gameObject.name + " " + state);
 
                 GameManager.Instance.detectedByQueen = true;
                 GameManager.Instance.playerTransform = targetEntity.transform;
                 yield return new WaitForSeconds(2f);
+                if (agent.remainingDistance <= 3f)
+                {
+                    var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
+                    agent.SetDestination(patrolPosition);
+                }
 
                 // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
             }

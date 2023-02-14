@@ -119,7 +119,7 @@ public class Pawn : LivingEntity
     void Update()
     {
         if (dead) return;
-        Debug.Log(gameObject.name + "State: " + state);
+        // Debug.Log(gameObject.name + "State: " + state);
         if (GameManager.Instance.escPressed)
         {
             audioSource.Stop();

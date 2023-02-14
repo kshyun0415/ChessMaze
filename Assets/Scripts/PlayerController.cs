@@ -129,7 +129,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     UpdateST();
                     // gameObject.GetComponent<CapsuleCollider>().radius = 0.5f;
                 }
-                Debug.Log("Stamina: " + stamina);
+
             }
             else
             {
