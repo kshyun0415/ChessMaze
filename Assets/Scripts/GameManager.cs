@@ -5,11 +5,14 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
-    private bool escPressed;
+    public bool escPressed { get; private set; }
     public bool isPlayerHidden;
     public Transform safeView;
     public bool isEnemyNear;
 
+
+    public bool detectedByQueen;
+    public Transform playerTransform;
 
     AudioSource audioSource;
     public AudioClip heartBeatSound;

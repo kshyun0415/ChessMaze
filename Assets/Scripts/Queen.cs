@@ -118,6 +118,10 @@ public class Queen : LivingEntity
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.escPressed)
+        {
+            audioSource.Stop();
+        }
         Debug.Log(gameObject.name + "State: " + state);
         if (dead) return;
 
@@ -195,7 +199,7 @@ public class Queen : LivingEntity
         {
             if (hasTarget)
             {
-                yield return new WaitForSeconds(1.5f);
+
                 if (state == State.Patrol)
                 {
                     state = State.Tracking;
@@ -204,11 +208,15 @@ public class Queen : LivingEntity
                 }
                 Debug.Log(gameObject.name + " " + state);
 
+                GameManager.Instance.detectedByQueen = true;
+                GameManager.Instance.playerTransform = targetEntity.transform;
+                yield return new WaitForSeconds(2f);
 
                 // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
             }
             else
             {
+                GameManager.Instance.detectedByQueen = false;
 
 
                 if (targetEntity != null) targetEntity = null;

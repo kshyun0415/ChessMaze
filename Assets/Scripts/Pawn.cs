@@ -119,12 +119,11 @@ public class Pawn : LivingEntity
     void Update()
     {
         if (dead) return;
-
-        // if (state == State.Tracking &&
-        //     Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
-        // {
-        //     // BeginAttack();
-        // }
+        Debug.Log(gameObject.name + "State: " + state);
+        if (GameManager.Instance.escPressed)
+        {
+            audioSource.Stop();
+        }
 
 
         if (GameManager.Instance.isPlayerHidden == true)
@@ -204,66 +203,75 @@ public class Pawn : LivingEntity
         // 살아있는 동안 무한 루프
         while (!dead)
         {
-
-            if (hasTarget)
+            if (GameManager.Instance.detectedByQueen)
             {
-                if (state == State.Patrol)
-                {
-                    state = State.Tracking;
-                    agent.speed = runSpeed;
-
-                }
-                // audioSource.clip = trackingClip;
-                // if (!audioSource.isPlaying)
-                // {
-                //     audioSource.Play();
-                // }
-
-                // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
-                agent.SetDestination(targetEntity.transform.position);
-
-
+                Debug.Log(gameObject.name + " tracking posiiton" + GameManager.Instance.playerTransform.position);
+                agent.SetDestination(GameManager.Instance.playerTransform.position);
+                yield return new WaitForSeconds(0.2f);
             }
             else
             {
-                if (targetEntity != null) targetEntity = null;
-
-                if (state != State.Patrol)
+                if (hasTarget)
                 {
-                    state = State.Patrol;
-                    agent.speed = patrolSpeed;
-                    // audioSource.clip = patrolClip;
+                    if (state == State.Patrol)
+                    {
+                        state = State.Tracking;
+                        agent.speed = runSpeed;
+
+                    }
+                    // audioSource.clip = trackingClip;
                     // if (!audioSource.isPlaying)
                     // {
                     //     audioSource.Play();
                     // }
+
+                    // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
+                    if (targetEntity != null) { agent.SetDestination(targetEntity.transform.position); }
+
+
+
                 }
-
-                if (agent.remainingDistance <= 3f)
+                else
                 {
-                    var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
-                    agent.SetDestination(patrolPosition);
-                }
+                    if (targetEntity != null) targetEntity = null;
 
-                // 20 유닛의 반지름을 가진 가상의 구를 그렸을때, 구와 겹치는 모든 콜라이더를 가져옴
-                // 단, whatIsTarget 레이어를 가진 콜라이더만 가져오도록 필터링
-                var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
-
-                // 모든 콜라이더들을 순회하면서, 살아있는 LivingEntity 찾기
-                foreach (var collider in colliders)
-                {
-                    if (!IsTargetOnSight(collider.transform)) break;
-
-                    var livingEntity = collider.GetComponent<LivingEntity>();
-
-                    // LivingEntity 컴포넌트가 존재하며, 해당 LivingEntity가 살아있다면,
-                    if (livingEntity != null && !livingEntity.dead)
+                    if (state != State.Patrol)
                     {
-                        // 추적 대상을 해당 LivingEntity로 설정
-                        targetEntity = livingEntity;
+                        state = State.Patrol;
+                        agent.speed = patrolSpeed;
+                        // audioSource.clip = patrolClip;
+                        // if (!audioSource.isPlaying)
+                        // {
+                        //     audioSource.Play();
+                        // }
+                    }
 
-                        // for문 루프 즉시 정지
-                        break;
+                    if (agent.remainingDistance <= 3f)
+                    {
+                        var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
+                        agent.SetDestination(patrolPosition);
+                    }
+
+                    // 20 유닛의 반지름을 가진 가상의 구를 그렸을때, 구와 겹치는 모든 콜라이더를 가져옴
+                    // 단, whatIsTarget 레이어를 가진 콜라이더만 가져오도록 필터링
+                    var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
+
+                    // 모든 콜라이더들을 순회하면서, 살아있는 LivingEntity 찾기
+                    foreach (var collider in colliders)
+                    {
+                        if (!IsTargetOnSight(collider.transform)) break;
+
+                        var livingEntity = collider.GetComponent<LivingEntity>();
+
+                        // LivingEntity 컴포넌트가 존재하며, 해당 LivingEntity가 살아있다면,
+                        if (livingEntity != null && !livingEntity.dead)
+                        {
+                            // 추적 대상을 해당 LivingEntity로 설정
+                            targetEntity = livingEntity;
+
+                            // for문 루프 즉시 정지
+                            break;
+                        }
                     }
                 }
             }

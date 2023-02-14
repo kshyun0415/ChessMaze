@@ -94,6 +94,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
+            Debug.Log(gameObject.GetComponent<CapsuleCollider>().radius);
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!GameManager.Instance.isPlayerHidden)
@@ -118,6 +119,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
                 if (m_CharacterController.velocity.sqrMagnitude > 99 && Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
+                    gameObject.GetComponent<CapsuleCollider>().radius = 2f;
                     stamina -= 10f * Time.deltaTime;
                     UpdateST();
                 }
@@ -125,6 +127,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     stamina += 10f * Time.deltaTime;
                     UpdateST();
+                    gameObject.GetComponent<CapsuleCollider>().radius = 0.5f;
                 }
             }
             else
