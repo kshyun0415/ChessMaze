@@ -30,8 +30,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        [SerializeField] float stamina = 100f;
-        private float maxStamina;
+        [SerializeField] float stamina;
+        private float maxStamina = 100f;
 
         public float playerHealth;
         public float maxHealth;
@@ -83,7 +83,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
             m_MouseLook.Init(transform, m_Camera.transform);
 
-            maxStamina = stamina;
+            stamina = maxStamina;
             stBar.localScale = Vector3.one;
 
             playerHealth = 100f;
@@ -94,7 +94,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            Debug.Log(gameObject.GetComponent<CapsuleCollider>().radius);
+            // Debug.Log(gameObject.GetComponent<CapsuleCollider>().radius);
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!GameManager.Instance.isPlayerHidden)
@@ -117,9 +117,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
 
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
-                if (m_CharacterController.velocity.sqrMagnitude > 99 && Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+                if (m_CharacterController.velocity.sqrMagnitude > 1 && Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
-                    gameObject.GetComponent<CapsuleCollider>().radius = 2f;
+                    // gameObject.GetComponent<CapsuleCollider>().radius = 2f;
                     stamina -= 10f * Time.deltaTime;
                     UpdateST();
                 }
@@ -127,12 +127,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
                     stamina += 10f * Time.deltaTime;
                     UpdateST();
-                    gameObject.GetComponent<CapsuleCollider>().radius = 0.5f;
+                    // gameObject.GetComponent<CapsuleCollider>().radius = 0.5f;
                 }
+                Debug.Log("Stamina: " + stamina);
             }
             else
             {
                 transform.position = GameManager.Instance.safeView.position;
+                if (stamina < 100f)
+                {
+                    stamina += 10f * Time.deltaTime;
+                    UpdateST();
+                }
                 // transform.rotation = GameManager.Instance.safeView.rotation;
                 if (rawInput.sqrMagnitude > 1)
                 {
