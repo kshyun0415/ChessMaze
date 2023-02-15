@@ -132,7 +132,7 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   damage: 30
   attackRadius: 2
-  fieldOfView: 30
+  fieldOfView: 100
   viewDistance: 10
   patrolSpeed: 3
   targetEntity: {fileID: 0}

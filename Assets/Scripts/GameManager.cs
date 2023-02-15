@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public bool isEnemyNear;
 
 
+
+
     public bool detectedByQueen;
     public Transform playerTransform;
 

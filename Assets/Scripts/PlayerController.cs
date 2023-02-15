@@ -145,6 +145,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 {
 
                     GameManager.Instance.isPlayerHidden = false;
+
                 }
             }
             var colliders = Physics.OverlapSphere(transform.position, enemyDistance, whatIsEnemy);
