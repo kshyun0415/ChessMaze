@@ -122,7 +122,7 @@ public class Queen : LivingEntity
         {
             audioSource.Stop();
         }
-        Debug.Log(gameObject.name + "State: " + state);
+        // Debug.Log(gameObject.name + "State: " + state);
         if (dead) return;
 
 
@@ -142,6 +142,15 @@ public class Queen : LivingEntity
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
+            }
+        }
+        if (state == State.Tracking)
+        {
+            audioSource.clip = laughingClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+
             }
         }
 
@@ -200,12 +209,12 @@ public class Queen : LivingEntity
             if (hasTarget)
             {
 
-                // if (state == State.Patrol)
-                // {
-                //     state = State.Tracking;
-                //     agent.speed = runSpeed;
+                if (state == State.Patrol)
+                {
+                    state = State.Tracking;
+                    // agent.speed = runSpeed;
 
-                // }
+                }
                 Debug.Log(gameObject.name + " " + state);
 
                 GameManager.Instance.detectedByQueen = true;
@@ -216,6 +225,7 @@ public class Queen : LivingEntity
                     var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
                     agent.SetDestination(patrolPosition);
                 }
+
 
                 // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
             }
@@ -255,13 +265,13 @@ public class Queen : LivingEntity
                     {
                         // 추적 대상을 해당 LivingEntity로 설정
                         targetEntity = livingEntity;
-                        audioSource.clip = laughingClip;
-                        if (!audioSource.isPlaying)
-                        {
-                            audioSource.Play();
+                        // audioSource.clip = laughingClip;
+                        // if (!audioSource.isPlaying)
+                        // {
+                        //     audioSource.Play();
 
-                        }
-                        state = State.Tracking;
+                        // }
+                        // state = State.Tracking;
 
                         // for문 루프 즉시 정지
                         break;

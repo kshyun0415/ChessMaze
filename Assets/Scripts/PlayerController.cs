@@ -96,6 +96,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             // Debug.Log(gameObject.GetComponent<CapsuleCollider>().radius);
             RotateView();
+
             // the jump state needs to read here to make sure it is not missed
             if (!GameManager.Instance.isPlayerHidden)
             {
@@ -179,6 +180,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             float speed;
             GetInput(out speed);
+
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 desiredMove = transform.forward * m_Input.y + transform.right * m_Input.x;
 
