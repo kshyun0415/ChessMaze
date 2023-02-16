@@ -4,22 +4,33 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 public class SceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public bool isloaded;
+    static GameObject container;
+    static SceneManager instance;
 
+    private void Start()
+    {
+        isloaded = false;
     }
-
-    // Update is called once per frame
-    void Update()
+    public static SceneManager Instance
     {
-
+        get
+        {
+            if (!instance)
+            {
+                container = new GameObject();
+                container.name = "SceneManager";
+                instance = container.AddComponent(typeof(SceneManager)) as SceneManager;
+                DontDestroyOnLoad(container);
+            }
+            return instance;
+        }
     }
-
-    public void LoadStage1()
+    public void LoadGame()
     {
+        isloaded = true;
         EditorSceneManager.LoadScene("Stage1");
-        // DataPersistenceManager.instance.LoadGame();
+
     }
     public void NewGame()
     {

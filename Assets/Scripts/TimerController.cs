@@ -23,7 +23,7 @@ public class TimerController : MonoBehaviour//, IDataPersistence
 
     public Text timeCounter;
 
-    private TimeSpan timePlaying;
+    public TimeSpan timePlaying;
     private bool timerGoing;
 
     public float elapsedTime = 0f;

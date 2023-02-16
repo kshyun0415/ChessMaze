@@ -50,6 +50,15 @@ public class GameManager : MonoBehaviour
         featherCount = 0;
         isPlayerHidden = false;
         audioSource = GetComponent<AudioSource>();
+        if (SceneManager.Instance.isloaded)
+        {
+            Debug.Log("Loaded");
+            DataManager.Instance.LoadGameData();
+        }
+        else
+        {
+            Debug.Log(SceneManager.Instance.isloaded);
+        }
     }
 
 
@@ -69,10 +78,10 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         featherCounter.text = "Feather: " + featherCount;
-        // if (featherCount == 5)
-        // {
-        //     DataPersistenceManager.instance.SaveGame();
-        // }
+        if (featherCount == 5)
+        {
+            DataManager.Instance.SaveGameData();
+        }
         // Debug.Log(featherCount);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -130,14 +139,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void LoadData(GameData data)
-    {
-        this.featherCount = data.featherCount;
-    }
-    public void SaveData(ref GameData data)
-    {
-        data.featherCount = this.featherCount;
-    }
 
 
 }
