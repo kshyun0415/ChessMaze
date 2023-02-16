@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimerController : MonoBehaviour
+public class TimerController : MonoBehaviour//, IDataPersistence
 {
     public static TimerController Instance
     {
@@ -26,7 +26,7 @@ public class TimerController : MonoBehaviour
     private TimeSpan timePlaying;
     private bool timerGoing;
 
-    private float elapsedTime = 0f;
+    public float elapsedTime = 0f;
 
     private void Awake()
     {
@@ -66,4 +66,13 @@ public class TimerController : MonoBehaviour
             yield return null;
         }
     }
+
+    // public void LoadData(GameData data)
+    // {
+    //     this.elapsedTime = data.playTime;
+    // }
+    // public void SaveData(ref GameData data)
+    // {
+    //     data.playTime = this.elapsedTime;
+    // }
 }

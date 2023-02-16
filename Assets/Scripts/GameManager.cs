@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public Text featherCounter;
 
-    public int countFeather;
+    public int featherCount;
 
     public bool detectedByQueen;
     public Transform playerTransform;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         escPressed = false;
-        countFeather = 0;
+        featherCount = 0;
         isPlayerHidden = false;
         audioSource = GetComponent<AudioSource>();
     }
@@ -68,8 +68,12 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
-        featherCounter.text = "Feather: " + countFeather;
-        // Debug.Log(countFeather);
+        featherCounter.text = "Feather: " + featherCount;
+        // if (featherCount == 5)
+        // {
+        //     DataPersistenceManager.instance.SaveGame();
+        // }
+        // Debug.Log(featherCount);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
@@ -126,7 +130,14 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    public void LoadData(GameData data)
+    {
+        this.featherCount = data.featherCount;
+    }
+    public void SaveData(ref GameData data)
+    {
+        data.featherCount = this.featherCount;
+    }
 
 
 }

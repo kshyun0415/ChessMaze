@@ -19,6 +19,12 @@ public class SceneManager : MonoBehaviour
     public void LoadStage1()
     {
         EditorSceneManager.LoadScene("Stage1");
+        // DataPersistenceManager.instance.LoadGame();
+    }
+    public void NewGame()
+    {
+        EditorSceneManager.LoadScene("Stage1");
+
     }
     public void MainMenu()
     {

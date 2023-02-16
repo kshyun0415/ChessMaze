@@ -39,7 +39,7 @@ public class RayInteraction : MonoBehaviour
                 {
                     Debug.Log("Item Clicked");
                     Destroy(hit.collider.gameObject);
-                    GameManager.Instance.countFeather += 1;
+                    GameManager.Instance.featherCount += 1;
                 }
 
             }
