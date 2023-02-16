@@ -132,7 +132,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 }
 
             }
-            else
+            else// if playerhidden
             {
                 transform.position = GameManager.Instance.safeView.position;
                 if (stamina < 100f)

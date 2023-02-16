@@ -31,12 +31,15 @@ public class RayInteraction : MonoBehaviour
             {
                 if (hit.collider.gameObject.tag == "SafeZone")
                 {
-
                     Debug.Log("Safe");
                     GameManager.Instance.isPlayerHidden = true;
                     GameManager.Instance.safeView = hit.collider.gameObject.transform.GetChild(0).transform;
-
-
+                }
+                if (hit.collider.gameObject.tag == "Item")
+                {
+                    Debug.Log("Item Clicked");
+                    Destroy(hit.collider.gameObject);
+                    GameManager.Instance.countFeather += 1;
                 }
 
             }

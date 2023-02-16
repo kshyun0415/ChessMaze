@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEditor.SceneManagement;
 // 점수와 게임 오버 여부, 게임 UI를 관리하는 게임 매니저
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class GameManager : MonoBehaviour
     public Transform safeView;
     public bool isEnemyNear;
 
+    public Text featherCounter;
 
-
+    public int countFeather;
 
     public bool detectedByQueen;
     public Transform playerTransform;
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         escPressed = false;
-
+        countFeather = 0;
         isPlayerHidden = false;
         audioSource = GetComponent<AudioSource>();
     }
@@ -61,12 +63,13 @@ public class GameManager : MonoBehaviour
             // 점수 추가
             score += newScore;
             // 점수 UI 텍스트 갱신
-            UIManager.Instance.UpdateScoreText(score);
+            // UIManager.Instance.UpdateScoreText(score);
         }
     }
     public void Update()
     {
-
+        featherCounter.text = "Feather: " + countFeather;
+        // Debug.Log(countFeather);
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour
         // 게임 오버 상태를 참으로 변경
         isGameover = true;
         // 게임 오버 UI를 활성화
-        UIManager.Instance.SetActiveGameoverUI(true);
+        // UIManager.Instance.SetActiveGameoverUI(true);
     }
     public void OnEscPressed()
     {
@@ -121,6 +124,9 @@ public class GameManager : MonoBehaviour
         escPressed = false;
         TimerController.instance.BeginTimer();
     }
+
+
+
 
 
 }
