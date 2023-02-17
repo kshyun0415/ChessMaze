@@ -94,7 +94,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         // Update is called once per frame
         private void Update()
         {
-            // Debug.Log(gameObject.GetComponent<CapsuleCollider>().radius);
+
+
             RotateView();
 
             // the jump state needs to read here to make sure it is not missed

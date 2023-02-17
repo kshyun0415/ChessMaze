@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
+    public GameObject DefaultCanvas;
+    public GameObject gameClearCanvas;
     public Bishop b1;
     public Bishop b2;
     public bool escPressed { get; private set; }
@@ -14,7 +16,7 @@ public class GameManager : MonoBehaviour
     public bool isEnemyNear;
 
     public Text featherCounter;
-
+    public Text playTimeText;
     public int featherCount;
 
     public bool detectedByQueen;
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        DefaultCanvas.SetActive(true);
+        gameClearCanvas.SetActive(false);
         // 씬에 싱글톤 오브젝트가 된 다른 GameManager 오브젝트가 있다면 자신을 파괴
         if (Instance != this) Destroy(gameObject);
 
@@ -79,10 +83,21 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
+
         featherCounter.text = "Feather: " + featherCount;
         if (featherCount == 5)
         {
+            DefaultCanvas.SetActive(false);
+            gameClearCanvas.SetActive(true);
+            if (Time.timeScale == 0) return;
+            TimerController.instance.EndTimer();
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
+            playTimeText.text = "Play Time: " + TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
+
             DataManager.Instance.SaveGameData();
+
         }
 
         detectedByBishop = b1.playerOnSight || b2.playerOnSight;

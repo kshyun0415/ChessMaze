@@ -136,23 +136,8 @@ public class Knight : LivingEntity
             OnPlayerNotHidden();
         }
 
-        // if (state == State.Patrol)
-        // {
-        //     audioSource.clip = patrolClip;
-        //     if (!audioSource.isPlaying)
-        //     {
-        //         audioSource.Play();
-        //     }
-        // }
+        Debug.Log(state);
 
-        if (state == State.Tracking)
-        {
-            audioSource.clip = trackingClip;
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
-        }
 
     }
 
@@ -161,49 +146,14 @@ public class Knight : LivingEntity
         if (dead) return;
 
 
-        // if (state == State.Attacking)
-        // {
-        //     var lookRotation =
-        //         Quaternion.LookRotation(targetEntity.transform.position - transform.position, Vector3.up);
-        //     var targetAngleY = lookRotation.eulerAngles.y;
 
-        //     transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY,
-        //                                 ref turnSmoothVelocity, turnSmoothTime);
-        // }
-
-        // if (state == State.Attacking)
-        // {
-        //     var direction = transform.forward;
-        //     var deltaDistance = agent.velocity.magnitude * Time.deltaTime;
-
-        //     var size = Physics.SphereCastNonAlloc(attackRoot.position, attackRadius, direction, hits, deltaDistance,
-        //         whatIsTarget);
-
-        //     for (var i = 0; i < size; i++)
-        //     {
-        //         var attackTargetEntity = hits[i].collider.GetComponent<LivingEntity>();
-
-        //         if (attackTargetEntity != null && !lastAttackedTargets.Contains(attackTargetEntity))
-        //         {
-        //             var message = new DamageMessage();
-        //             message.amount = damage;
-        //             message.damager = gameObject;
-        //             message.hitPoint = attackRoot.TransformPoint(hits[i].point);
-        //             message.hitNormal = attackRoot.TransformDirection(hits[i].normal);
-
-        //             attackTargetEntity.ApplyDamage(message);
-
-        //             lastAttackedTargets.Add(attackTargetEntity);
-        //             break;
-        //         }
-        //     }
-        // }
     }
     private IEnumerator UpdatePath()
     {
         // 살아있는 동안 무한 루프
         while (!dead)
         {
+
             if (GameManager.Instance.detectedByQueen)
             {
                 // Debug.Log(gameObject.name + " tracking posiiton" + GameManager.Instance.playerTransform.position);
@@ -219,12 +169,15 @@ public class Knight : LivingEntity
                         state = State.Tracking;
                         agent.speed = runSpeed;
 
+
+
                     }
-                    // audioSource.clip = trackingClip;
-                    // if (!audioSource.isPlaying)
-                    // {
-                    //     audioSource.Play();
-                    // }
+                    audioSource.clip = patrolClip;
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.Play();
+                    }
+
 
                     // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
                     if (targetEntity != null) { agent.SetDestination(targetEntity.transform.position); }
@@ -234,17 +187,18 @@ public class Knight : LivingEntity
                 }
                 else
                 {
+                    audioSource.clip = patrolClip;
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.Play();
+                    }
                     if (targetEntity != null) targetEntity = null;
 
                     if (state != State.Patrol)
                     {
                         state = State.Patrol;
                         agent.speed = patrolSpeed;
-                        // audioSource.clip = patrolClip;
-                        // if (!audioSource.isPlaying)
-                        // {
-                        //     audioSource.Play();
-                        // }
+
                     }
 
                     if (agent.remainingDistance <= 3f)
@@ -270,7 +224,11 @@ public class Knight : LivingEntity
                         {
                             // 추적 대상을 해당 LivingEntity로 설정
                             targetEntity = livingEntity;
+                            audioSource.Stop();
 
+                            audioSource.clip = trackingClip;
+                            audioSource.Play();
+                            yield return new WaitForSeconds(2f);
                             // for문 루프 즉시 정지
                             break;
                         }

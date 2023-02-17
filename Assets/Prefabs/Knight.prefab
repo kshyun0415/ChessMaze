@@ -72,8 +72,8 @@ MonoBehaviour:
   startingHealth: 100
   attackRoot: {fileID: 2455595468191601801}
   eyeTransform: {fileID: 2455595468191601801}
-  patrolClip: {fileID: 0}
-  trackingClip: {fileID: 0}
+  patrolClip: {fileID: 8300000, guid: e516151e928865046beb1c404fbea0dc, type: 3}
+  trackingClip: {fileID: 8300000, guid: 87f439f58764ec449a261b4cd7905d63, type: 3}
   runSpeed: 15
   turnSmoothTime: 0.1
   damage: 30
@@ -141,7 +141,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
