@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
+    public Bishop b1;
+    public Bishop b2;
     public bool escPressed { get; private set; }
     public bool isPlayerHidden;
     public Transform safeView;
@@ -82,7 +84,15 @@ public class GameManager : MonoBehaviour
         {
             DataManager.Instance.SaveGameData();
         }
+
+        detectedByBishop = b1.playerOnSight || b2.playerOnSight;
+        Debug.Log(detectedByBishop);
         // Debug.Log(featherCount);
+        if (isPlayerHidden)
+        {
+            b1.playerOnSight = false;
+            b2.playerOnSight = false;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 

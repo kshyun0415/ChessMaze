@@ -55,7 +55,7 @@ public class Bishop : LivingEntity
 
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
 
-
+    public bool playerOnSight;
 
 #if UNITY_EDITOR
 
@@ -118,6 +118,7 @@ public class Bishop : LivingEntity
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Player On Sight:" + playerOnSight);
         if (dead) return;
         if (hasTarget) { Debug.Log(gameObject.name + "State: " + state); }
         if (GameManager.Instance.escPressed)
@@ -159,130 +160,85 @@ public class Bishop : LivingEntity
     {
         if (dead) return;
 
-
-        // if (state == State.Attacking)
-        // {
-        //     var lookRotation =
-        //         Quaternion.LookRotation(targetEntity.transform.position - transform.position, Vector3.up);
-        //     var targetAngleY = lookRotation.eulerAngles.y;
-
-        //     transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY,
-        //                                 ref turnSmoothVelocity, turnSmoothTime);
-        // }
-
-        // if (state == State.Attacking)
-        // {
-        //     var direction = transform.forward;
-        //     var deltaDistance = agent.velocity.magnitude * Time.deltaTime;
-
-        //     var size = Physics.SphereCastNonAlloc(attackRoot.position, attackRadius, direction, hits, deltaDistance,
-        //         whatIsTarget);
-
-        //     for (var i = 0; i < size; i++)
-        //     {
-        //         var attackTargetEntity = hits[i].collider.GetComponent<LivingEntity>();
-
-        //         if (attackTargetEntity != null && !lastAttackedTargets.Contains(attackTargetEntity))
-        //         {
-        //             var message = new DamageMessage();
-        //             message.amount = damage;
-        //             message.damager = gameObject;
-        //             message.hitPoint = attackRoot.TransformPoint(hits[i].point);
-        //             message.hitNormal = attackRoot.TransformDirection(hits[i].normal);
-
-        //             attackTargetEntity.ApplyDamage(message);
-
-        //             lastAttackedTargets.Add(attackTargetEntity);
-        //             break;
-        //         }
-        //     }
-        // }
     }
     private IEnumerator UpdatePath()
     {
         // 살아있는 동안 무한 루프
         while (!dead)
         {
-            if (GameManager.Instance.detectedByQueen)
+
+            if (hasTarget)
             {
-                // Debug.Log(gameObject.name + " tracking posiiton" + GameManager.Instance.playerTransform.position);
-                agent.SetDestination(GameManager.Instance.playerTransform.position);
-                yield return new WaitForSeconds(0.2f);
+                if (state == State.Patrol)
+                {
+                    state = State.Tracking;
+                    agent.speed = runSpeed;
+
+                }
+
+                // audioSource.clip = trackingClip;
+                // if (!audioSource.isPlaying)
+                // {
+                //     audioSource.Play();
+                // }
+
+                // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
+                if (targetEntity != null) { agent.SetDestination(targetEntity.transform.position); }
+
+
+
             }
             else
             {
-                if (hasTarget)
+                if (targetEntity != null) targetEntity = null;
+
+                if (state != State.Patrol)
                 {
-                    if (state == State.Patrol)
-                    {
-                        state = State.Tracking;
-                        agent.speed = runSpeed;
-
-                    }
-
-                    // audioSource.clip = trackingClip;
+                    state = State.Patrol;
+                    agent.speed = patrolSpeed;
+                    // audioSource.clip = patrolClip;
                     // if (!audioSource.isPlaying)
                     // {
                     //     audioSource.Play();
                     // }
-
-                    // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
-                    if (targetEntity != null) { agent.SetDestination(targetEntity.transform.position); }
-
-
-
                 }
-                else
+
+                if (agent.remainingDistance <= 3f)
                 {
-                    if (targetEntity != null) targetEntity = null;
+                    var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
+                    agent.SetDestination(patrolPosition);
+                }
 
-                    if (state != State.Patrol)
+                // 20 유닛의 반지름을 가진 가상의 구를 그렸을때, 구와 겹치는 모든 콜라이더를 가져옴
+                // 단, whatIsTarget 레이어를 가진 콜라이더만 가져오도록 필터링
+                var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
+
+                // 모든 콜라이더들을 순회하면서, 살아있는 LivingEntity 찾기
+                foreach (var collider in colliders)
+                {
+                    if (!IsTargetOnSight(collider.transform)) break;
+
+                    var livingEntity = collider.GetComponent<LivingEntity>();
+
+                    // LivingEntity 컴포넌트가 존재하며, 해당 LivingEntity가 살아있다면,
+                    if (livingEntity != null && !livingEntity.dead)
                     {
-                        state = State.Patrol;
-                        agent.speed = patrolSpeed;
-                        // audioSource.clip = patrolClip;
-                        // if (!audioSource.isPlaying)
-                        // {
-                        //     audioSource.Play();
-                        // }
-                    }
+                        // 추적 대상을 해당 LivingEntity로 설정
+                        targetEntity = livingEntity;
 
-                    if (agent.remainingDistance <= 3f)
-                    {
-                        var patrolPosition = Utility.GetRandomPointOnNavMesh(transform.position, 20f, NavMesh.AllAreas);
-                        agent.SetDestination(patrolPosition);
-                    }
-
-                    // 20 유닛의 반지름을 가진 가상의 구를 그렸을때, 구와 겹치는 모든 콜라이더를 가져옴
-                    // 단, whatIsTarget 레이어를 가진 콜라이더만 가져오도록 필터링
-                    var colliders = Physics.OverlapSphere(eyeTransform.position, viewDistance, whatIsTarget);
-
-                    // 모든 콜라이더들을 순회하면서, 살아있는 LivingEntity 찾기
-                    foreach (var collider in colliders)
-                    {
-                        if (!IsTargetOnSight(collider.transform)) break;
-
-                        var livingEntity = collider.GetComponent<LivingEntity>();
-
-                        // LivingEntity 컴포넌트가 존재하며, 해당 LivingEntity가 살아있다면,
-                        if (livingEntity != null && !livingEntity.dead)
-                        {
-                            // 추적 대상을 해당 LivingEntity로 설정
-                            targetEntity = livingEntity;
-
-                            // for문 루프 즉시 정지
-                            break;
-                        }
+                        // for문 루프 즉시 정지
+                        break;
                     }
                 }
             }
+
 
             // 0.2 초 주기로 처리 반복
             yield return new WaitForSeconds(0.2f);
         }
     }
 
-    private bool IsTargetOnSight(Transform target)
+    public bool IsTargetOnSight(Transform target)
     {
         RaycastHit hit;
 
@@ -292,6 +248,7 @@ public class Bishop : LivingEntity
 
         if (Vector3.Angle(direction, eyeTransform.forward) > fieldOfView * 0.5f)
         {
+            playerOnSight = true;
             return false;
         }
 
@@ -301,7 +258,11 @@ public class Bishop : LivingEntity
         // }
         if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance))
         {
-            if (hit.transform == target) return true;
+            if (hit.transform == target)
+            {
+
+                return true;
+            }
         }
 
         return false;
@@ -311,6 +272,7 @@ public class Bishop : LivingEntity
     {
         Player.layer = 7;
         targetEntity = null;
+
     }
     public void OnPlayerNotHidden()
     {
