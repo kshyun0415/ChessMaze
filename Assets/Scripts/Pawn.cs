@@ -119,7 +119,7 @@ public class Pawn : LivingEntity
     void Update()
     {
         if (dead) return;
-        // Debug.Log(gameObject.name + "State: " + state);
+        if (hasTarget) { Debug.Log(gameObject.name + "State: " + state); }
         if (GameManager.Instance.escPressed)
         {
             audioSource.Stop();
@@ -294,7 +294,11 @@ public class Pawn : LivingEntity
             return false;
         }
 
-        if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance, whatIsTarget))
+        // if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance, whatIsTarget))
+        // {
+        //     if (hit.transform == target) return true;
+        // }
+        if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance))
         {
             if (hit.transform == target) return true;
         }

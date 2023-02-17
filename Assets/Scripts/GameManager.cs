@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         {
 
             DataManager.Instance.LoadGameData();
+            GameManager.instance.featherCount -= 1;
             Debug.Log("Loaded");
         }
 
