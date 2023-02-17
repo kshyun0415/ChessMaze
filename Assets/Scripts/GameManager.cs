@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int featherCount;
 
     public bool detectedByQueen;
+    public bool detectedByBishop;
     public Transform playerTransform;
 
     AudioSource audioSource;
