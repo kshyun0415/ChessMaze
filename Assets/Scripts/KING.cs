@@ -4,7 +4,7 @@
 // #if UNITY_EDITOR
 // using UnityEditor;
 // #endif
-// public class KING : MonoBehaviour
+// public class King : MonoBehaviour
 // {
 //     public Transform kingsEye;
 //     public float fieldOfView = 50f;

@@ -4,14 +4,11 @@ using UnityEngine;
 using UnityEditor.SceneManagement;
 public class SceneManager : MonoBehaviour
 {
-    public bool isloaded;
+
     static GameObject container;
     static SceneManager instance;
 
-    private void Start()
-    {
-        isloaded = false;
-    }
+
     public static SceneManager Instance
     {
         get
@@ -28,12 +25,14 @@ public class SceneManager : MonoBehaviour
     }
     public void LoadGame()
     {
-        isloaded = true;
+        InGameData.isloaded = true;
         EditorSceneManager.LoadScene("Stage1");
+
 
     }
     public void NewGame()
     {
+        InGameData.isloaded = false;
         EditorSceneManager.LoadScene("Stage1");
 
     }

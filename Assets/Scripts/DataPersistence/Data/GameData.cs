@@ -8,4 +8,5 @@ public class Data
     public float playTime;
     public int featherCount;
 
+    public bool isloaded;
 }

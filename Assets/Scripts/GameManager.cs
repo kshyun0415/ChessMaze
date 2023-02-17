@@ -50,15 +50,13 @@ public class GameManager : MonoBehaviour
         featherCount = 0;
         isPlayerHidden = false;
         audioSource = GetComponent<AudioSource>();
-        if (SceneManager.Instance.isloaded)
+        if (InGameData.isloaded)
         {
-            Debug.Log("Loaded");
+
             DataManager.Instance.LoadGameData();
+            Debug.Log("Loaded");
         }
-        else
-        {
-            Debug.Log(SceneManager.Instance.isloaded);
-        }
+
     }
 
 
