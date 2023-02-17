@@ -4,10 +4,13 @@ using UnityEditor.SceneManagement;
 // 점수와 게임 오버 여부, 게임 UI를 관리하는 게임 매니저
 public class GameManager : MonoBehaviour
 {
+    public bool gameClear;
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
     public GameObject DefaultCanvas;
-    public GameObject gameClearCanvas;
+
+    public GameObject gameResultCanvas;
+    public Text gameResultText;
     public Bishop b1;
     public Bishop b2;
     public bool escPressed { get; private set; }
@@ -17,12 +20,14 @@ public class GameManager : MonoBehaviour
 
     public Text featherCounter;
     public Text playTimeText;
+
+    public Text hpText;
     public int featherCount;
 
     public bool detectedByQueen;
     public bool detectedByBishop;
     public Transform playerTransform;
-
+    public float playerHealth;
     AudioSource audioSource;
     public AudioClip heartBeatSound;
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
@@ -46,13 +51,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DefaultCanvas.SetActive(true);
-        gameClearCanvas.SetActive(false);
+        gameResultCanvas.SetActive(false);
         // 씬에 싱글톤 오브젝트가 된 다른 GameManager 오브젝트가 있다면 자신을 파괴
         if (Instance != this) Destroy(gameObject);
 
     }
     private void Start()
-    {
+    {AudioListener.pause = false;
+        playerHealth = 100f;
         escPressed = false;
         featherCount = 0;
         isPlayerHidden = false;
@@ -83,23 +89,36 @@ public class GameManager : MonoBehaviour
     }
     public void Update()
     {
+        hpText.text = "HP: " + (int)(playerHealth);
 
         featherCounter.text = "Feather: " + featherCount;
         if (featherCount == 5)
         {
+            gameClear = true;
             DefaultCanvas.SetActive(false);
-            gameClearCanvas.SetActive(true);
+            gameResultText.text = "Stage1: Clear";
+            gameResultCanvas.SetActive(true);
             if (Time.timeScale == 0) return;
             TimerController.instance.EndTimer();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
             playTimeText.text = "Play Time: " + TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
-
+            AudioListener.pause = true;
             DataManager.Instance.SaveGameData();
 
         }
-
+        if (playerHealth <= 0)
+        {
+            gameClear = false;
+            DefaultCanvas.SetActive(false);
+            TimerController.instance.EndTimer();
+            gameResultText.text = "Stage1: Fail";
+            playTimeText.text = "Play Time: " + TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
+            gameResultCanvas.SetActive(true);
+            AudioListener.pause = true;
+            DataManager.Instance.SaveGameData();
+        }
         detectedByBishop = b1.playerOnSight || b2.playerOnSight;
         Debug.Log(detectedByBishop);
         // Debug.Log(featherCount);

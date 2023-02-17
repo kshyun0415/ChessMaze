@@ -135,14 +135,11 @@ public class Pawn : LivingEntity
             OnPlayerNotHidden();
         }
 
-        // if (state == State.Patrol)
-        // {
-        //     audioSource.clip = patrolClip;
-        //     if (!audioSource.isPlaying)
-        //     {
-        //         audioSource.Play();
-        //     }
-        // }
+        if (state == State.Tracking &&
+            Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+        {
+            GameManager.Instance.playerHealth -= 10 * Time.deltaTime;
+        }
 
         if (state == State.Tracking)
         {
@@ -294,10 +291,7 @@ public class Pawn : LivingEntity
             return false;
         }
 
-        // if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance, whatIsTarget))
-        // {
-        //     if (hit.transform == target) return true;
-        // }
+
         if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance))
         {
             if (hit.transform == target) return true;

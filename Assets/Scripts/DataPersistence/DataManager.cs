@@ -52,6 +52,7 @@ public class DataManager : MonoBehaviour
     {
         data.featherCount = GameManager.Instance.featherCount;
         data.playTime = TimerController.instance.elapsedTime;
+        data.gameClear = GameManager.Instance.gameClear;
         // 클래스를 Json 형식으로 전환 (true : 가독성 좋게 작성)
         string ToJsonData = JsonUtility.ToJson(data, true);
         string filePath = Application.persistentDataPath + "/" + GameDataFileName;

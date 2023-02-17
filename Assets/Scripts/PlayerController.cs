@@ -33,7 +33,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] float stamina;
         private float maxStamina = 100f;
 
-        public float playerHealth;
+
         public float maxHealth;
         // public Text stText { get; private set; }
         public RectTransform stBar;
@@ -86,7 +86,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             stamina = maxStamina;
             stBar.localScale = Vector3.one;
 
-            playerHealth = 100f;
+
             maxHealth = 100f;
         }
 

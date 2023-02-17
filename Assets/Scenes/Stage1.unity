@@ -2228,7 +2228,7 @@ GameObject:
   - component: {fileID: 920673600}
   - component: {fileID: 920673599}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2287,7 +2287,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Stage 1 : Clear'
+  m_Text: 'Stage 1 :'
 --- !u!222 &920673600
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3591,9 +3591,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a301ba5a2db214cb90f7a7fa1f62f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameClear: 0
   EscCanvas: {fileID: 495999765}
   DefaultCanvas: {fileID: 1256087685}
-  gameClearCanvas: {fileID: 2046295485}
+  gameResultCanvas: {fileID: 2046295485}
+  gameResultText: {fileID: 920673599}
   b1: {fileID: 2082990593}
   b2: {fileID: 2145567985}
   isPlayerHidden: 0
@@ -3601,10 +3603,12 @@ MonoBehaviour:
   isEnemyNear: 0
   featherCounter: {fileID: 1048343105}
   playTimeText: {fileID: 1027778565}
+  hpText: {fileID: 1796162678}
   featherCount: 0
   detectedByQueen: 0
   detectedByBishop: 0
   playerTransform: {fileID: 0}
+  playerHealth: 0
   heartBeatSound: {fileID: 8300000, guid: 5475ee36d693ff84e8c431ca243f960e, type: 3}
 --- !u!82 &1582033189
 AudioSource:
@@ -4659,7 +4663,7 @@ GameObject:
   - component: {fileID: 2046295487}
   - component: {fileID: 2046295486}
   m_Layer: 5
-  m_Name: GameClearCanvas
+  m_Name: GameResultCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4762,6 +4766,14 @@ PrefabInstance:
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7175247880063203787, guid: 8a3389101008ccc488c4e392ed93b2a7, type: 3}
+      propertyPath: patrolClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 037e4eea9dbb6034e8055fe4fbeb7535, type: 3}
+    - target: {fileID: 7175247880063203787, guid: 8a3389101008ccc488c4e392ed93b2a7, type: 3}
+      propertyPath: trackingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 64d3e42627ab13b438ee641cd945cb50, type: 3}
     - target: {fileID: 7175247880719607334, guid: 8a3389101008ccc488c4e392ed93b2a7, type: 3}
       propertyPath: m_Name
       value: Bishop1
