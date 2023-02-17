@@ -311,12 +311,12 @@ public class Queen : LivingEntity
 
     public void OnPlayerHidden()
     {
-        Player.layer = LayerMask.NameToLayer("Hidden");
+        Player.layer = 7;
         targetEntity = null;
     }
     public void OnPlayerNotHidden()
     {
-        Player.layer = LayerMask.NameToLayer("Player");
+        Player.layer = 3;
     }
 
 }

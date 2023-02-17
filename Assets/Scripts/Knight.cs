@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using UnityEditor;
 #endif
 
-public class Pawn : LivingEntity
+public class Knight : LivingEntity
 {
     private enum State
     {
@@ -31,7 +31,7 @@ public class Pawn : LivingEntity
 
     // private Renderer skinRenderer; // 렌더러 컴포넌트
 
-    public float runSpeed = 10f;
+    public float runSpeed = 15f;
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
@@ -39,9 +39,9 @@ public class Pawn : LivingEntity
     public float attackRadius = 2f;
     private float attackDistance;
 
-    public float fieldOfView = 50f;
-    public float viewDistance = 10f;
-    public float patrolSpeed = 3f;
+    public float fieldOfView = 15f;
+    public float viewDistance = 20f;
+    public float patrolSpeed = 5f;
 
     [HideInInspector] public LivingEntity targetEntity; // 추적할 대상
     public LayerMask whatIsTarget; // 추적 대상 레이어
@@ -70,7 +70,8 @@ public class Pawn : LivingEntity
         var leftRayRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
         var leftRayDirection = leftRayRotation * transform.forward;
         Handles.color = new Color(1f, 1f, 1f, 0.2f);
-        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
+        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, -leftRayDirection, fieldOfView, viewDistance);
+
     }
 
 #endif
