@@ -40,7 +40,7 @@ public class Knight : LivingEntity
     private float attackDistance;
 
     public float fieldOfView = 15f;
-    public float viewDistance = 20f;
+    public float viewDistance = 40f;
     public float patrolSpeed = 5f;
 
     [HideInInspector] public LivingEntity targetEntity; // 추적할 대상
@@ -70,7 +70,7 @@ public class Knight : LivingEntity
         var leftRayRotation = Quaternion.AngleAxis(-fieldOfView * 0.5f, Vector3.up);
         var leftRayDirection = leftRayRotation * transform.forward;
         Handles.color = new Color(1f, 1f, 1f, 0.2f);
-        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, -leftRayDirection, fieldOfView, viewDistance);
+        Handles.DrawSolidArc(eyeTransform.position, Vector3.up, leftRayDirection, fieldOfView, viewDistance);
 
     }
 
@@ -260,6 +260,7 @@ public class Knight : LivingEntity
                     // 모든 콜라이더들을 순회하면서, 살아있는 LivingEntity 찾기
                     foreach (var collider in colliders)
                     {
+                        // Debug.Log(collider.name);
                         if (!IsTargetOnSight(collider.transform)) break;
 
                         var livingEntity = collider.GetComponent<LivingEntity>();
@@ -301,6 +302,7 @@ public class Knight : LivingEntity
         // }
         if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance))
         {
+            Debug.DrawRay(eyeTransform.position, direction * viewDistance, Color.red);
             if (hit.transform == target) return true;
         }
 
