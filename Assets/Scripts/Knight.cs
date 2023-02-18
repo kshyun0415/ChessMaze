@@ -120,7 +120,15 @@ public class Knight : LivingEntity
     void Update()
     {
         if (dead) return;
-        if (hasTarget) { Debug.Log(gameObject.name + "State: " + state); }
+        if (hasTarget)
+        {
+            Debug.Log(gameObject.name + "State: " + state);
+            if (state == State.Tracking &&
+                        Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+            {
+                GameManager.Instance.playerHealth -= 30 * Time.deltaTime;
+            }
+        }
         if (GameManager.Instance.escPressed)
         {
             audioSource.Stop();
@@ -137,11 +145,7 @@ public class Knight : LivingEntity
         }
 
         Debug.Log(state);
-        if (state == State.Tracking &&
-                    Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
-        {
-            GameManager.Instance.playerHealth -= 30 * Time.deltaTime;
-        }
+
 
     }
 

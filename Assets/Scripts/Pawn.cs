@@ -119,13 +119,21 @@ public class Pawn : LivingEntity
     void Update()
     {
         if (dead) return;
-        if (hasTarget) { Debug.Log(gameObject.name + "State: " + state); }
         if (GameManager.Instance.escPressed)
         {
             audioSource.Stop();
         }
+        if (hasTarget)
+        {
+            Debug.Log(gameObject.name + "State: " + state);
 
 
+            if (state == State.Tracking &&
+                        Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+            {
+                GameManager.Instance.playerHealth -= 10 * Time.deltaTime;
+            }
+        }
         if (GameManager.Instance.isPlayerHidden == true)
         {
             OnPlayerHidden();
@@ -135,11 +143,11 @@ public class Pawn : LivingEntity
             OnPlayerNotHidden();
         }
 
-        if (state == State.Tracking &&
-            Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
-        {
-            GameManager.Instance.playerHealth -= 10 * Time.deltaTime;
-        }
+        // if (state == State.Tracking &&
+        //     Vector3.Distance(targetEntity.transform.position, transform.position) <= attackDistance)
+        // {
+        //     GameManager.Instance.playerHealth -= 10 * Time.deltaTime;
+        // }
 
         if (state == State.Tracking)
         {

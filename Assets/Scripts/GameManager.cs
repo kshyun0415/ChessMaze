@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+
 // 점수와 게임 오버 여부, 게임 UI를 관리하는 게임 매니저
 public class GameManager : MonoBehaviour
 {
@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour
 
     }
     private void Start()
-    {AudioListener.pause = false;
+    {
+        AudioListener.pause = false;
         playerHealth = 100f;
         escPressed = false;
         featherCount = 0;
