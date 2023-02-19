@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4960513798542475283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4960513798542475281}
+  - component: {fileID: 4960513798542475282}
+  m_Layer: 0
+  m_Name: MazeSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4960513798542475281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960513798542475283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4960513798542475282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960513798542475283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbd480039f60a344bdc0ff90b9d70b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Algorithm: 0
+  FullRandom: 1
+  RandomSeed: 3
+  Floor: {fileID: 3281610841947193497, guid: fc1b2739500568f4596eee710a00ff14, type: 3}
+  Wall: {fileID: 8727148470480859197, guid: f70f3f11e031b8446aed601c51cf91e0, type: 3}
+  Pillar: {fileID: 5357172532433003319, guid: 7758647f874304b4f8b36a57a02a59d9, type: 3}
+  Rows: 10
+  Columns: 10
+  CellWidth: 6
+  CellHeight: 6
+  AddGaps: 0
+  GoalPrefab: {fileID: 159624, guid: 850205124263c924ea0aa82f0fdf2673, type: 3}
