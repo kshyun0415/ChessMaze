@@ -33,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.98, y: -4.5, z: -7.4}
   m_LocalScale: {x: 12, y: 12, z: 12}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7719553953901372688}
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.07
   m_BaseOffset: 0
-  m_WalkableMask: 8
+  m_WalkableMask: 121
   m_ObstacleAvoidanceType: 4
 --- !u!114 &6791321362777775750
 MonoBehaviour:
@@ -123,22 +123,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe13a6d181675440a14faa49a80a6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  attackRoot: {fileID: 7719553953901372688}
-  eyeTransform: {fileID: 7719553953901372688}
+  detectRoot: {fileID: 7719553953901372688}
   patrolClip: {fileID: 8300000, guid: cd655802d7663464c8fdecc831a74723, type: 3}
   trackingClip: {fileID: 8300000, guid: f8a18e4f9433d3645a20c046b6787a03, type: 3}
   runSpeed: 10
+  patrolSpeed: 1
   turnSmoothTime: 0.1
   damage: 30
   attackRadius: 2
   fieldOfView: 100
   viewDistance: 10
-  patrolSpeed: 1
-  targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 8
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &7719553953823060557
 Rigidbody:
   m_ObjectHideFlags: 0

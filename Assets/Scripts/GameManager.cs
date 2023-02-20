@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int featherCount;
 
     public bool detectedByQueen;
+    public Transform queenTargetTransform;
     public bool detectedByBishop;
     public Transform playerTransform;
     public float playerHealth;
@@ -91,7 +92,10 @@ public class GameManager : MonoBehaviour
     public void Update()
     {
         hpText.text = "HP: " + (int)(playerHealth);
-
+        if (detectedByQueen)
+        {
+            // Debug.Log("GameManager:" + detectedByQueen + queenTargetTransform.position);
+        }
         featherCounter.text = "Feather: " + featherCount;
         if (featherCount == 5)
         {
@@ -120,14 +124,10 @@ public class GameManager : MonoBehaviour
             AudioListener.pause = true;
             DataManager.Instance.SaveGameData();
         }
-        detectedByBishop = b1.playerOnSight || b2.playerOnSight;
-        Debug.Log(detectedByBishop);
+        detectedByBishop = b1.hasTarget || b2.hasTarget;
+
         // Debug.Log(featherCount);
-        if (isPlayerHidden)
-        {
-            b1.playerOnSight = false;
-            b2.playerOnSight = false;
-        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
 
