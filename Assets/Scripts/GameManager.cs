@@ -8,7 +8,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance; // 싱글톤이 할당될 static 변수
     public GameObject EscCanvas;
     public GameObject DefaultCanvas;
-
+    public GameObject SafeCanvas;
+    public GameObject HurtCanvas;
     public GameObject gameResultCanvas;
     public Text gameResultText;
     public Bishop b1;
@@ -29,8 +30,9 @@ public class GameManager : MonoBehaviour
     public bool detectedByBishop;
     public Transform playerTransform;
     public float playerHealth;
+    public float previous_playerHealth;
     AudioSource audioSource;
-    public AudioClip heartBeatSound;
+    public AudioClip HitSound;
     // 외부에서 싱글톤 오브젝트를 가져올때 사용할 프로퍼티
     public static GameManager Instance
     {
@@ -61,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         AudioListener.pause = false;
         playerHealth = 100f;
+        previous_playerHealth = playerHealth;
         escPressed = false;
         featherCount = 0;
         isPlayerHidden = false;
@@ -145,20 +148,32 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        if (isEnemyNear)
-        {
 
-            audioSource.clip = heartBeatSound;
+        if (previous_playerHealth > playerHealth)
+        {
+            HurtCanvas.SetActive(true);
+            audioSource.clip = HitSound;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
             }
+
+        }
+
+        else
+        {
+            HurtCanvas.SetActive(false);
+        }
+        if (isPlayerHidden)
+        {
+            SafeCanvas.SetActive(true);
         }
         else
         {
-            audioSource.Stop();
+            SafeCanvas.SetActive(false);
         }
 
+        previous_playerHealth = playerHealth;
     }
 
     // 게임 오버 처리

@@ -101,7 +101,10 @@ public class Pawn : MonoBehaviour
         }
 
 
-
+        if (hasTarget && state == State.Tracking && Vector3.Distance(targetTransform.position, transform.position) <= attackDistance)
+        {
+            GameManager.Instance.playerHealth -= 30 * Time.deltaTime;
+        }
         if (state == State.Tracking)
         {
             audioSource.clip = trackingClip;
@@ -110,10 +113,12 @@ public class Pawn : MonoBehaviour
                 audioSource.Play();
             }
         }
-        if (GameManager.Instance.isPlayerHidden)
+        if (hasTarget && GameManager.Instance.isPlayerHidden)
         {
             OnplayerHidden();
         }
+
+
     }
     private IEnumerator UpdatePath()
     {
