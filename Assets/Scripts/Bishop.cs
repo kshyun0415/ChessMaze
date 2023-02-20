@@ -7,7 +7,7 @@ using UnityEngine.AI;
 using UnityEditor;
 #endif
 
-public class Bishop : LivingEntity
+public class Bishop : MonoBehaviour
 {
     private enum State
     {
@@ -78,7 +78,7 @@ public class Bishop : LivingEntity
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+
         audioSource = GetComponent<AudioSource>();
         // skinRenderer = GetComponentInChildren<Renderer>();
 
@@ -94,18 +94,8 @@ public class Bishop : LivingEntity
     public void Setup(float health, float damage,
             float runSpeed, float patrolSpeed, Color skinColor)
     {
-        // 체력 설정
-        this.startingHealth = health;
-        this.health = health;
-
-        // 내비메쉬 에이전트의 이동 속도 설정
         this.runSpeed = runSpeed;
         this.patrolSpeed = patrolSpeed;
-
-        this.damage = damage;
-
-        // 렌더러가 사용중인 머테리얼의 컬러를 변경, 외형 색이 변함
-        // skinRenderer.material.color = skinColor;
     }
 
     void Start()
@@ -118,8 +108,6 @@ public class Bishop : LivingEntity
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Player On Sight:" + playerOnSight);
-        if (dead) return;
         if (hasTarget) { Debug.Log(gameObject.name + "State: " + state); }
         if (GameManager.Instance.escPressed)
         {
@@ -136,15 +124,6 @@ public class Bishop : LivingEntity
             OnPlayerNotHidden();
         }
 
-        // if (state == State.Patrol)
-        // {
-        //     audioSource.clip = patrolClip;
-        //     if (!audioSource.isPlaying)
-        //     {
-        //         audioSource.Play();
-        //     }
-        // }
-
         if (state == State.Tracking)
         {
             audioSource.clip = trackingClip;
@@ -156,15 +135,11 @@ public class Bishop : LivingEntity
 
     }
 
-    private void FixedUpdate()
-    {
-        if (dead) return;
 
-    }
     private IEnumerator UpdatePath()
     {
-        // 살아있는 동안 무한 루프
-        while (!dead)
+
+        while (!GameManager.Instance.isGameover)
         {
 
             if (hasTarget)
@@ -175,18 +150,7 @@ public class Bishop : LivingEntity
                     agent.speed = runSpeed;
 
                 }
-
-                // audioSource.clip = trackingClip;
-                // if (!audioSource.isPlaying)
-                // {
-                //     audioSource.Play();
-                // }
-
-                // 추적 대상 존재 : 경로를 갱신하고 AI 이동을 계속 진행
                 if (targetEntity != null) { agent.SetDestination(targetEntity.transform.position); }
-
-
-
             }
             else
             {
@@ -196,11 +160,6 @@ public class Bishop : LivingEntity
                 {
                     state = State.Patrol;
                     agent.speed = patrolSpeed;
-                    // audioSource.clip = patrolClip;
-                    // if (!audioSource.isPlaying)
-                    // {
-                    //     audioSource.Play();
-                    // }
                 }
 
                 if (agent.remainingDistance <= 3f)
@@ -248,19 +207,16 @@ public class Bishop : LivingEntity
 
         if (Vector3.Angle(direction, eyeTransform.forward) > fieldOfView * 0.5f)
         {
-            playerOnSight = true;
+
             return false;
         }
 
-        // if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance, whatIsTarget))
-        // {
-        //     if (hit.transform == target) return true;
-        // }
+
         if (Physics.Raycast(eyeTransform.position, direction, out hit, viewDistance))
         {
             if (hit.transform == target)
             {
-
+                playerOnSight = true;
                 return true;
             }
         }

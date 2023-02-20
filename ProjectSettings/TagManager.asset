@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SafeZone
   - Item
+  - Feather
   layers:
   - Default
   - TransparentFX
