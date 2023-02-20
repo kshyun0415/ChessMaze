@@ -1,0 +1,1257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 9
+  m_Fog: 0
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_FogMode: 3
+  m_FogDensity: 0.01
+  m_LinearFogStart: 0
+  m_LinearFogEnd: 300
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 1
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 512
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 0
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 0
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 20d1b91fbfcaf2d42a91d07f518734c5, type: 2}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 2
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1001 &133095093
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1063543637775760, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsGold_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2945294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 99.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999410473579916, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d61aace88f5ec54c8d1b7318a42f1a2, type: 3}
+--- !u!1001 &249111558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1791620918425566, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsNature_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -131.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 98.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150052773153808, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 71f6fc1c1b99d2d4092879ddfe5e3f24, type: 3}
+--- !u!1001 &274312991
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1213773853760668, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsWhite
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 59.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049358640623898, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d231ce9e18e35df49b510cd74ae0b402, type: 3}
+--- !u!1001 &283311709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1088656032318360, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsNature
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -127.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652113038811392, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57957eb48bb50fe418f16f6bb1e6f87b, type: 3}
+--- !u!1 &348088023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 348088028}
+  - component: {fileID: 348088027}
+  - component: {fileID: 348088025}
+  - component: {fileID: 348088024}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &348088024
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348088023}
+  m_Enabled: 1
+--- !u!124 &348088025
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348088023}
+  m_Enabled: 1
+--- !u!20 &348088027
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348088023}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 0
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &348088028
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348088023}
+  m_LocalRotation: {x: -0.13720421, y: 0.26315427, z: -0.03783849, w: -0.9541977}
+  m_LocalPosition: {x: 15.728321, y: 13.636965, z: 61.555176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &391603178
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1714399898127948, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsWhite
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 63.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 152.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4874224336704262, guid: d829b0138724aa94995bbd415207d593, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d829b0138724aa94995bbd415207d593, type: 3}
+--- !u!1001 &454409045
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1860845836707848, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsPurple
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -45.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473190221878312, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1c2e2746f781ea14e890ef5b4d7f3436, type: 3}
+--- !u!1001 &512751491
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1869937314253152, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsGold
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4862032679847758, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc1dbbde5aece6441b3cf8867d1bcee8, type: 3}
+--- !u!1001 &577649006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1043918338178542, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsWhite_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 98.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198306839052776, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c6080c9fc1a3f9438a79a210ed45800, type: 3}
+--- !u!1001 &591122578
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1943656526529716, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_RootOrder
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -225.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684096794829550, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea61cb9af508d8342afed9f15fe6fee2, type: 3}
+--- !u!1001 &647706312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1142658142654170, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsSpectral
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -169.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4088095031893802, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b3583f27b687e324989fe96c19e058bd, type: 3}
+--- !u!1001 &801411192
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1079689657549254, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsSpectral
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_RootOrder
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -174.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956405459758146, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 493dbf75a4fd8734fb80296abacb8350, type: 3}
+--- !u!1001 &843815964
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 65.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4065240924052630, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198310037693175014, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: randomSeed
+      value: 1314109820
+      objectReference: {fileID: 0}
+    - target: {fileID: 198310037693175014, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.ctime1
+      value: 10794
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b0d11784f87c314fbc14470afbb125b, type: 3}
+--- !u!1001 &1020265548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1390351700091304, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsFire_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -224
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 99.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463771731727992, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d53b10c4740fa1e488c56d5b2264b0dc, type: 3}
+--- !u!1001 &1110739544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 573.3453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 169.87512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 243.32925
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4232042629908148, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6f9cc47a28e666640a6fdb4e7d3df175, type: 2}
+--- !u!1001 &1227271007
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1749700510317532, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsIce_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -87.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 99.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4396036345698804, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 025da8a455a0bf149b86b2c5de31b209, type: 3}
+--- !u!1001 &1379593307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1173457693322846, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsPurple
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -42.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978994786626254, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c77522a6a8cb0b458dfedebcb58946b, type: 3}
+--- !u!1001 &1389075619
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1109356135383698, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsGold
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109356135383698, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.2945294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437109898894478, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 07067412fbe4f7141adbbd81cdbc5720, type: 3}
+--- !u!1001 &1725384797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1999481248047368, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsIce
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -87.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198739443136668, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b065643dae425d40a03d922ec2eec38, type: 3}
+--- !u!1001 &1847629883
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1256538184686426, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsNature
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_RootOrder
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -129.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 204.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516772584837278, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62d9de442db9c7f45879765f20c411a5, type: 3}
+--- !u!1001 &1873208735
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1814595176481198, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsPurple_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -43.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 99.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4736705950421336, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb6a4fe20e313a141a2b22ef94bc4e00, type: 3}
+--- !u!1001 &2060586095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1399205426513098, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -221.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4725821961898388, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf6e948fa43d3f14388122f227314b34, type: 3}
+--- !u!1001 &2079260356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1735536997940760, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsSpectral_Tendrils
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -172.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 98.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4965768121066118, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c3189ac0e2430f243933f621d9ac3dfe, type: 3}
+--- !u!1001 &2098849614
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1118983364719488, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_Name
+      value: AngelWingsIce
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -85.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 151.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861047749747060, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 258f1292a8ec10841bb5cebd52af6c17, type: 3}
