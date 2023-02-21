@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject DefaultCanvas;
     public GameObject SafeCanvas;
     public GameObject HurtCanvas;
+    public GameObject BloodImage;
     public GameObject gameResultCanvas;
     public Text gameResultText;
     public Bishop b1;
@@ -75,6 +76,10 @@ public class GameManager : MonoBehaviour
             GameManager.instance.featherCount -= 1;
             Debug.Log("Loaded");
         }
+        BloodImage = GameObject.Find("Blood");
+        Color color = BloodImage.GetComponent<Image>().color;
+        color.a = 0f;
+        BloodImage.GetComponent<Image>().color = color;
 
     }
 
@@ -125,6 +130,8 @@ public class GameManager : MonoBehaviour
             playTimeText.text = "Play Time: " + TimerController.instance.timePlaying.ToString("mm':'ss'.'ff");
             gameResultCanvas.SetActive(true);
             AudioListener.pause = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             DataManager.Instance.SaveGameData();
         }
         detectedByBishop = b1.hasTarget || b2.hasTarget;
@@ -148,10 +155,12 @@ public class GameManager : MonoBehaviour
             }
 
         }
-
+        Color color = BloodImage.GetComponent<Image>().color;
+        color.a = (100 - playerHealth) / 100;
+        BloodImage.GetComponent<Image>().color = color;
         if (previous_playerHealth > playerHealth)
         {
-            HurtCanvas.SetActive(true);
+
             audioSource.clip = HitSound;
             if (!audioSource.isPlaying)
             {
@@ -160,10 +169,7 @@ public class GameManager : MonoBehaviour
 
         }
 
-        else
-        {
-            HurtCanvas.SetActive(false);
-        }
+
         if (isPlayerHidden)
         {
             SafeCanvas.SetActive(true);
@@ -199,7 +205,18 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void RestoreHealth(float recovery)
+    {
+        if (playerHealth + recovery < 100)
+        {
+            playerHealth += recovery;
+        }
+        else
+        {
+            playerHealth = 100;
+        }
 
+    }
 
 }
 

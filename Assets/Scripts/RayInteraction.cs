@@ -35,11 +35,17 @@ public class RayInteraction : MonoBehaviour
                     GameManager.Instance.isPlayerHidden = true;
                     GameManager.Instance.safeView = hit.collider.gameObject.transform.GetChild(0).transform;
                 }
-                if (hit.collider.gameObject.tag == "Item")
+                if (hit.collider.gameObject.tag == "Feather")
                 {
-                    Debug.Log("Item Clicked");
+                    Debug.Log("Feather Clicked");
                     Destroy(hit.collider.gameObject);
                     GameManager.Instance.featherCount += 1;
+                }
+                if (hit.collider.gameObject.tag == "Potion")
+                {
+                    Debug.Log("Potion");
+                    Destroy(hit.collider.gameObject);
+                    GameManager.Instance.RestoreHealth(50f);
                 }
 
             }

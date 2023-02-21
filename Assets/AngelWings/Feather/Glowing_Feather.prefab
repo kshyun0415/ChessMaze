@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4435473513851106}
   - component: {fileID: 198351347038678364}
   - component: {fileID: 199943005946474720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glowing_Feather
-  m_TagString: Untagged
+  m_TagString: Feather
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4494,7 +4494,6 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 299070bc09a89e14d844d91e266efc80, type: 2}
   - {fileID: 2100000, guid: 299070bc09a89e14d844d91e266efc80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

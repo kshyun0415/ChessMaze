@@ -44,6 +44,8 @@ public class Bishop : MonoBehaviour
 
     public Transform targetTransform;
     public bool hasTarget => targetTransform != null;
+    public float timeCounter;
+    public float bishopTime = 5f;
 
 #if UNITY_EDITOR
 
@@ -90,6 +92,8 @@ public class Bishop : MonoBehaviour
     {
         // Player = GameObject.Find("FPSController");
         StartCoroutine(UpdatePath());
+        timeCounter = 0f;
+
 
     }
     void Update()
@@ -114,6 +118,17 @@ public class Bishop : MonoBehaviour
         {
             OnplayerHidden();
         }
+        if (hasTarget)
+        {
+            timeCounter += Time.deltaTime;
+            if (timeCounter > bishopTime)
+            {
+                targetTransform = null;
+                Debug.Log(timeCounter);
+                timeCounter = 0;
+
+            }
+        }
     }
     private IEnumerator UpdatePath()
     {
@@ -133,13 +148,7 @@ public class Bishop : MonoBehaviour
             }
             else
             {
-                if (GameManager.Instance.detectedByQueen)
-                {
-                    Debug.Log("Pawn tracking queens target");
-                    agent.SetDestination(GameManager.Instance.queenTargetTransform.position);
-                    yield return new WaitForSeconds(0.2f);
-                    continue;
-                }
+
                 if (targetTransform != null) targetTransform = null;
 
                 if (state != State.Patrol)
