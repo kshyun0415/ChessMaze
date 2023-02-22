@@ -45,7 +45,7 @@ public class Bishop : MonoBehaviour
     public Transform targetTransform;
     public bool hasTarget => targetTransform != null;
     public float timeCounter;
-    public float bishopTime = 5f;
+    public float bishopTime = 3f;
 
 #if UNITY_EDITOR
 

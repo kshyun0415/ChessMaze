@@ -12,13 +12,13 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: 1F
-    cost: 1
+    cost: 2
   - name: 2F
-    cost: 1
+    cost: 2
   - name: Walkable
-    cost: 1
+    cost: 2
   - name: Stairs
-    cost: 1
+    cost: 2
   - name: Patrol_1F
     cost: 1
   - name: Patrol_2F
@@ -76,7 +76,7 @@ NavMeshProjectSettings:
     agentRadius: 0.5
     agentHeight: 1
     agentSlope: 60
-    agentClimb: 0.52
+    agentClimb: 1.05
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2

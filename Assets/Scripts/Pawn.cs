@@ -127,6 +127,7 @@ public class Pawn : MonoBehaviour
                 timeCounter = 0f;
                 state = State.Patrol;
                 Debug.Log("Lost Target");
+                agent.speed = patrolSpeed;
             }
         }
         if (hasTarget && GameManager.Instance.isPlayerHidden)

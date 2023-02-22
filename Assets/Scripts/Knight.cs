@@ -43,7 +43,7 @@ public class Knight : MonoBehaviour
 
     private Transform targetTransform;
     private bool hasTarget => targetTransform != null;
-
+    private float timeCount;
 #if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
@@ -89,6 +89,7 @@ public class Knight : MonoBehaviour
     {
         // Player = GameObject.Find("FPSController");
         StartCoroutine(UpdatePath());
+        timeCount = 0f;
 
     }
     void Update()
@@ -110,14 +111,18 @@ public class Knight : MonoBehaviour
         }
 
 
-        // if (state == State.Tracking)
-        // {
-        //     audioSource.clip = trackingClip;
-        //     if (!audioSource.isPlaying)
-        //     {
-        //         audioSource.Play();
-        //     }
-        // }
+        if (state == State.Tracking)
+        {
+            timeCount += Time.deltaTime;
+            if (timeCount > 5f)
+            {
+                targetTransform = null;
+                state = State.Patrol;
+                agent.speed = patrolSpeed;
+                timeCount = 0f;
+                Debug.Log("Lost Target");
+            }
+        }
         if (GameManager.Instance.isPlayerHidden)
         {
             OnplayerHidden();
