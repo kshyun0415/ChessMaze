@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject DefaultCanvas;
     public GameObject SafeCanvas;
     public GameObject HurtCanvas;
-    public GameObject BloodImage;
+    GameObject BloodImage;
+
     public GameObject gameResultCanvas;
     public Text gameResultText;
     public Bishop b1;
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
     public int featherCount;
 
     public bool detectedByQueen;
+    // public bool detectedByRook;
+    // public Rook Rook1;
+    // public Rook Rook2;
+    // public int rookCount;
     public Transform queenTargetTransform;
     public bool detectedByBishop;
     public Transform playerTransform;
@@ -74,6 +79,8 @@ public class GameManager : MonoBehaviour
 
             DataManager.Instance.LoadGameData();
             GameManager.instance.featherCount -= 1;
+
+
             Debug.Log("Loaded");
         }
         BloodImage = GameObject.Find("Blood");
@@ -135,7 +142,7 @@ public class GameManager : MonoBehaviour
             DataManager.Instance.SaveGameData();
         }
         detectedByBishop = b1.hasTarget || b2.hasTarget;
-
+        // detectedByRook = Rook1.hasTarget || Rook2.hasTarget;
         // Debug.Log(featherCount);
 
         if (Input.GetKeyDown(KeyCode.Escape))

@@ -100,10 +100,17 @@ public class Pawn : MonoBehaviour
             audioSource.Stop();
         }
 
-
+        if (state == State.Patrol)
+        {
+            audioSource.clip = patrolClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
         if (hasTarget && state == State.Tracking && Vector3.Distance(targetTransform.position, transform.position) <= attackDistance)
         {
-            GameManager.Instance.playerHealth -= 30 * Time.deltaTime;
+            GameManager.Instance.playerHealth -= 60 * Time.deltaTime;
         }
         if (state == State.Tracking)
         {

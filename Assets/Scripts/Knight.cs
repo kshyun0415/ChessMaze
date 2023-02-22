@@ -100,15 +100,24 @@ public class Knight : MonoBehaviour
         }
 
 
-
-        if (state == State.Tracking)
+        if (state == State.Patrol)
         {
-            audioSource.clip = trackingClip;
+            audioSource.clip = patrolClip;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
             }
         }
+
+
+        // if (state == State.Tracking)
+        // {
+        //     audioSource.clip = trackingClip;
+        //     if (!audioSource.isPlaying)
+        //     {
+        //         audioSource.Play();
+        //     }
+        // }
         if (GameManager.Instance.isPlayerHidden)
         {
             OnplayerHidden();
@@ -126,19 +135,16 @@ public class Knight : MonoBehaviour
                 {
                     state = State.Tracking;
                     agent.speed = runSpeed;
-
+                    audioSource.Stop();
+                    audioSource.clip = trackingClip;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(1f);
                 }
                 if (targetTransform != null) { agent.SetDestination(targetTransform.transform.position); }
             }
             else
             {
-                if (GameManager.Instance.detectedByQueen)
-                {
-                    Debug.Log("Pawn tracking queens target");
-                    agent.SetDestination(GameManager.Instance.queenTargetTransform.position);
-                    yield return new WaitForSeconds(0.2f);
-                    continue;
-                }
+
                 if (targetTransform != null) targetTransform = null;
 
                 if (state != State.Patrol)

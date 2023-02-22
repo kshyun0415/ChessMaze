@@ -98,6 +98,16 @@ public class Queen : MonoBehaviour
             OnplayerHidden();
         }
 
+        if (state == State.Patrol)
+        {
+            audioSource.clip = patrolClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+
+
     }
     private IEnumerator UpdatePath()
     {
@@ -110,8 +120,19 @@ public class Queen : MonoBehaviour
                 {
                     state = State.Tracking;
                     agent.speed = runSpeed;
+                    audioSource.clip = trackingClip;
+                    audioSource.Stop();
+                    audioSource.clip = trackingClip;
+                    audioSource.Play();
+                    yield return new WaitForSeconds(1f);
 
                 }
+                audioSource.clip = patrolClip;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+
                 GameManager.Instance.detectedByQueen = true;
                 GameManager.Instance.queenTargetTransform = targetTransform;
 

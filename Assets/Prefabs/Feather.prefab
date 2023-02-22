@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116820067182691975}
   - component: {fileID: 1116820067182691974}
+  - component: {fileID: 7551248673987199051}
   m_Layer: 6
   m_Name: Feather
   m_TagString: Feather
@@ -46,6 +47,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.49, y: 1.49, z: 0.53}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7551248673987199051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116820067182691973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a41d9785056bf41908c77081d3693f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1116820067897055906
 PrefabInstance:
   m_ObjectHideFlags: 0

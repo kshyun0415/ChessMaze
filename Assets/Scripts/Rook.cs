@@ -27,14 +27,16 @@ public class Rook : MonoBehaviour
     public AudioClip patrolClip;
     public AudioClip trackingClip;
 
-    public float runSpeed = 10f;
+    public float runSpeed = 7f;
     public float patrolSpeed = 3f;
+    public float kingSpeed = 10f;
     [Range(0.01f, 2f)] public float turnSmoothTime = 0.1f;
     private float turnSmoothVelocity;
 
     public float damage = 30f;
     public float attackRadius = 2f;
     private float attackDistance;
+    private int rookCount;
 
     public float fieldOfView = 50f;
     public float viewDistance = 10f;
@@ -43,8 +45,17 @@ public class Rook : MonoBehaviour
     public LayerMask obstacleMask;
 
     private Transform targetTransform;
-    private bool hasTarget => targetTransform != null;
+    public bool hasTarget => targetTransform != null;
 
+    public Mesh KingMesh;
+    public Material KingMaterial;
+    public Mesh RookMesh;
+    public Material RookMaterial;
+    MeshFilter meshFilter;
+    public float timeCount;
+    bool kingActivated;
+
+    public float dealAmount;
 #if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
@@ -90,6 +101,12 @@ public class Rook : MonoBehaviour
     {
         // Player = GameObject.Find("FPSController");
         StartCoroutine(UpdatePath());
+        meshFilter = gameObject.GetComponent<MeshFilter>();
+        meshFilter.mesh = RookMesh;
+        rookCount = 0;
+        timeCount = 0f;
+        dealAmount = 30f;
+        kingActivated = false;
 
     }
     void Update()
@@ -103,21 +120,66 @@ public class Rook : MonoBehaviour
 
         if (hasTarget && state == State.Tracking && Vector3.Distance(targetTransform.position, transform.position) <= attackDistance)
         {
-            GameManager.Instance.playerHealth -= 30 * Time.deltaTime;
+
+            GameManager.Instance.playerHealth -= dealAmount * Time.deltaTime;
         }
-        if (state == State.Tracking)
+        if (state == State.Patrol)
         {
-            audioSource.clip = trackingClip;
+            audioSource.clip = patrolClip;
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
             }
         }
+        if (state == State.Tracking)
+        {
+
+            timeCount += Time.deltaTime;
+
+            if (timeCount >= 3f)
+            {
+                targetTransform = null;
+
+                state = State.Patrol;
+                agent.speed = patrolSpeed;
+                Debug.Log(timeCount);
+                timeCount = 0f;
+            }
+
+        }
+
         if (hasTarget && GameManager.Instance.isPlayerHidden)
         {
             OnplayerHidden();
         }
+        if (rookCount >= 2 && state == State.Tracking)
+        {
+            meshFilter.mesh = KingMesh;
+            gameObject.GetComponent<MeshRenderer>().material = KingMaterial;
+            kingActivated = true;
+            agent.speed = kingSpeed;
+            dealAmount = 70f;
+            timeCount += Time.deltaTime;
+            if (timeCount > 3f)
+            {
+                state = State.Patrol;
+                targetTransform = null;
+                timeCount = 0;
+            }
+            audioSource.clip = trackingClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
 
+        }
+        else
+        {
+            meshFilter.mesh = RookMesh;
+            gameObject.GetComponent<MeshRenderer>().material = RookMaterial;
+            agent.speed = patrolSpeed;
+            kingActivated = false;
+        }
 
     }
     private IEnumerator UpdatePath()
@@ -132,8 +194,11 @@ public class Rook : MonoBehaviour
                 {
                     state = State.Tracking;
                     agent.speed = runSpeed;
+                    rookCount += 1;
+                    Debug.Log("RookCount: " + rookCount);
 
                 }
+
                 if (targetTransform != null) { agent.SetDestination(targetTransform.transform.position); }
             }
             else
@@ -169,7 +234,8 @@ public class Rook : MonoBehaviour
                         if (!Physics.Raycast(transform.position, dirToPlayer, distToPlayer, obstacleMask))
                         {
                             targetTransform = player;
-
+                            // rookCount += 1;
+                            // Debug.Log("RookCount: " + rookCount);
                         }
                     }
 
@@ -190,6 +256,7 @@ public class Rook : MonoBehaviour
     private void OnplayerHidden()
     {
         targetTransform = null;
+        rookCount = 0;
     }
 
 
