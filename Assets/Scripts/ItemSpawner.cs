@@ -12,8 +12,11 @@ public class ItemSpawner : MonoBehaviour
     public Transform originalTransform;
     public GameObject feather;
     public GameObject potion;
+    public int featherIndex;
+    public int potionIndex;
     private static ItemSpawner instance; // 싱글톤이 할당될 static 변수
     public static ItemSpawner Instance
+
     {
         get
         {
@@ -31,12 +34,14 @@ public class ItemSpawner : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            spawnFeather();
+            spawnFeather(i);
+            featherIndex++;
             // SpawnItem(feather);
         }
         for (int i = 0; i < 3; i++)
         {
-            spawnPotion();
+            spawnPotion(i);
+            potionIndex++;
             // SpawnItem(potion);
         }
     }
@@ -47,28 +52,41 @@ public class ItemSpawner : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Feather").Length < 5)
         {
             // SpawnItem(feather);
-            spawnFeather();
+            spawnFeather(featherIndex);
+            featherIndex++;
 
         }
         if (GameObject.FindGameObjectsWithTag("Potion").Length < 3)
         {
             // SpawnItem(potion);
             // Debug.Log("SpawnPotion");
-            spawnPotion();
+            spawnPotion(potionIndex);
+            potionIndex++;
+        }
+
+        if (featherIndex > featherPoints.Length)
+        {
+            featherIndex = 0;
+        }
+        if (potionIndex > potionPoints.Length)
+        {
+            potionIndex = 0;
         }
     }
 
-    public void spawnFeather()
+    public void spawnFeather(int index)
     {
-        int randFeather = Random.Range(0, featherPoints.Length);
-        Instantiate(feather, featherPoints[randFeather]);
+        // int randFeather = Random.Range(0, featherPoints.Length);
+        Instantiate(feather, featherPoints[index]);
+
     }
 
 
-    public void spawnPotion()
+    public void spawnPotion(int index)
     {
-        int randPotion = Random.Range(0, potionPoints.Length);
-        Instantiate(potion, potionPoints[randPotion]);
+        // int randPotion = Random.Range(0, potionPoints.Length);
+        Instantiate(potion, potionPoints[index]);
+
     }
     // public void SpawnItem(GameObject item)
     // {
