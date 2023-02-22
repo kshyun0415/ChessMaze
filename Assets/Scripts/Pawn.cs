@@ -44,7 +44,7 @@ public class Pawn : MonoBehaviour
 
     private Transform targetTransform;
     private bool hasTarget => targetTransform != null;
-
+    private float timeCounter;
 #if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
@@ -90,6 +90,7 @@ public class Pawn : MonoBehaviour
     {
         // Player = GameObject.Find("FPSController");
         StartCoroutine(UpdatePath());
+        timeCounter = 0f;
 
     }
     void Update()
@@ -118,6 +119,14 @@ public class Pawn : MonoBehaviour
             if (!audioSource.isPlaying)
             {
                 audioSource.Play();
+            }
+            timeCounter += Time.deltaTime;
+            if (timeCounter > 5f)
+            {
+                targetTransform = null;
+                timeCounter = 0f;
+                state = State.Patrol;
+                Debug.Log("Lost Target");
             }
         }
         if (hasTarget && GameManager.Instance.isPlayerHidden)

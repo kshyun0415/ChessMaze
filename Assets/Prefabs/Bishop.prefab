@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7175247880063203784}
   - component: {fileID: 7175247880063203787}
   - component: {fileID: 7175247880063203785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bishop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7175247880719607334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 17.5, y: 0, z: 36}
-  m_LocalScale: {x: 12, y: 12, z: 12}
+  m_LocalScale: {x: 24, y: 24, z: 24}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7175247880786858288}
@@ -143,7 +143,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -195,23 +195,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ff8b25ed22397e4b91a9660e8409e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
-  attackRoot: {fileID: 7175247880786858288}
-  eyeTransform: {fileID: 7175247880786858288}
-  patrolClip: {fileID: 0}
-  trackingClip: {fileID: 0}
-  runSpeed: 4
+  detectRoot: {fileID: 7175247880786858288}
+  patrolClip: {fileID: 8300000, guid: 037e4eea9dbb6034e8055fe4fbeb7535, type: 3}
+  trackingClip: {fileID: 8300000, guid: 64d3e42627ab13b438ee641cd945cb50, type: 3}
+  runSpeed: 7
+  patrolSpeed: 3
   turnSmoothTime: 0.1
   damage: 30
   attackRadius: 2
   fieldOfView: 30
   viewDistance: 20
-  patrolSpeed: 3
-  targetEntity: {fileID: 0}
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 8
-  playerOnSight: 0
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
+  targetTransform: {fileID: 0}
+  timeCounter: 0
+  bishopTime: 5
 --- !u!195 &7175247880063203785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -232,7 +234,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.08
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 25
   m_ObstacleAvoidanceType: 4
 --- !u!1 &7175247880786858291
 GameObject:
@@ -243,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7175247880786858288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
