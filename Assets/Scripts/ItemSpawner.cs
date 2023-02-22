@@ -55,7 +55,7 @@ public class ItemSpawner : MonoBehaviour
     public void SpawnItem(GameObject item)
     {
 
-        var spawnPosition = Utility.GetRandomPointOnNavMesh(originalTransform.position, 30f, NavMesh.AllAreas);
+        var spawnPosition = Utility.GetRandomPointOnNavMesh(originalTransform.position, 100f, NavMesh.AllAreas);
         spawnPosition.y = 1f;
         Instantiate(item, spawnPosition, Quaternion.identity);
     }
