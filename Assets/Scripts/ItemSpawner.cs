@@ -6,6 +6,9 @@ using UnityEngine.AI;
 
 public class ItemSpawner : MonoBehaviour
 {
+
+    public Transform[] featherPoints;
+    public Transform[] potionPoints;
     public Transform originalTransform;
     public GameObject feather;
     public GameObject potion;
@@ -28,11 +31,13 @@ public class ItemSpawner : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            SpawnItem(feather);
+            spawnFeather();
+            // SpawnItem(feather);
         }
         for (int i = 0; i < 3; i++)
         {
-            SpawnItem(potion);
+            spawnPotion();
+            // SpawnItem(potion);
         }
     }
 
@@ -41,22 +46,35 @@ public class ItemSpawner : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Feather").Length < 5)
         {
-            SpawnItem(feather);
-
+            // SpawnItem(feather);
+            spawnFeather();
 
         }
         if (GameObject.FindGameObjectsWithTag("Potion").Length < 3)
         {
-            SpawnItem(potion);
+            // SpawnItem(potion);
             // Debug.Log("SpawnPotion");
+            spawnPotion();
         }
     }
 
-    public void SpawnItem(GameObject item)
+    public void spawnFeather()
     {
-
-        var spawnPosition = Utility.GetRandomPointOnNavMesh(originalTransform.position, 100f, NavMesh.AllAreas);
-        spawnPosition.y = 1f;
-        Instantiate(item, spawnPosition, Quaternion.identity);
+        int randFeather = Random.Range(0, featherPoints.Length);
+        Instantiate(feather, featherPoints[randFeather]);
     }
+
+
+    public void spawnPotion()
+    {
+        int randPotion = Random.Range(0, potionPoints.Length);
+        Instantiate(potion, potionPoints[randPotion]);
+    }
+    // public void SpawnItem(GameObject item)
+    // {
+
+    //     var spawnPosition = Utility.GetRandomPointOnNavMesh(originalTransform.position, 70f, NavMesh.AllAreas);
+    //     spawnPosition.y = 0.5f;
+    //     Instantiate(item, spawnPosition, Quaternion.identity);
+    // }
 }
